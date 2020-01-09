@@ -1,0 +1,114 @@
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+div.wrapper {
+  width: 450px;
+  padding: 20px;
+}
+
+form {
+  background-color: white;
+  box-shadow: 0 0 4px 2px silver;
+  padding: 20px;
+}
+
+div.form-group {
+  margin-bottom: 20px;
+}
+
+span.title {
+  float: left;
+  text-align: right;
+  margin-right: 17px;
+  width: 95px;
+  font-size: 0.85em;
+}
+
+label[for="female"] {
+  margin-left: 10px;
+}
+
+input[type="submit"] {
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 8px;
+  text-align: center;
+  width: 80px;
+  outline: none;
+  display: block;
+  background-color: white;
+  color: black;
+  border-radius: 30%;
+  box-shadow: 0 10px 5px black;
+  transition: 0.1s linear;
+}
+
+input[type="submit"]:hover {
+  background-color: silver;
+  color: white;
+}
+
+input[type="submit"]:active {
+  transform: translateY(5px);
+  box-shadow: 0 5px 5px black;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 8px 10px;
+  border-radius: 3px;
+  border: solid 2px black;
+  height: 40px;
+  width: 200px;
+}
+
+select {
+  border-radius: 3px;
+  border: solid 2px black;
+  width: 200px;
+}
+
+select option {
+  padding: 8px 10px;
+}
+
+div.error {
+  color: red;
+  font-size: 0.85em;
+  text-align: center;
+  margin: 10px auto 0;
+  display: none;
+}
+
+div.form-error {
+  border: 2px solid red;
+  padding: 10px 10px 0;
+  border-radius: 5px;
+}
+
+div#greeting {
+  display: none;
+  background-color: hsl(80, 65%, 57%, 0.8);
+  color: #82152E;
+  padding: 18px 10px;
+  margin: 0 0 20px;
+  border-left: 5px solid #20070D;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

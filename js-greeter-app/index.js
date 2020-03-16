@@ -31,7 +31,7 @@ document.querySelector("form").addEventListener("submit", e => {
   if (name.value == "") {
     setErr("nameErr", "Insert Your Name");
   } else {
-    let patt = /^([a-zA-Z]*)\s*([a-zA-Z]*)$/;
+    let patt = /^([a-zA-Z]*)\s?([a-zA-Z]*)$/;
     if (!patt.test(name.value)) {
       setErr("nameErr", "Insert Your Valid Full Name");
     } else {
@@ -90,7 +90,7 @@ document.querySelector("form").addEventListener("submit", e => {
       title = (age == "adult") ? "Mr" : "Master";
     }
 
-    if (genderVal === "female") {
+    if (genderVal == "female") {
       if (age == "minor") {
         title = "Miss";
       } else {

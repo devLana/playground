@@ -14,6 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #333;
+  user-select: none;
 }
 
 .calculator {
@@ -24,27 +25,36 @@ body {
   padding: 12px;
   width: 290px;
   background-color: #0d1f26;
-  font-family: 'Play', sans-serif;
+  font-family: 'Sarpanch', sans-serif;
   text-align: right;
-  color: #347b98;
+  color: #eaf3be;
 }
 
-#input {
-  height: 40px;
-  font-size: 23px;
+#calculator__input {
+  height: 45px;
+  font-size: 25px;
 }
 
-#result {
-  height: 50px;
-  font-size: 21px;
+#calculator__result {
+  height: 25px;
+  font-size: 18px;
 }
 
-#input,
-#result {
+#calculator__input,
+#calculator__result {
+  white-space: nowrap;
   display: flex;
+  flex-direction: row-reverse;
   align-items: flex-end;
-  justify-content: flex-end;
   overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  #calculator__input,
+  #calculator__result {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
 }
 
 #calculator__buttons {
@@ -61,9 +71,8 @@ button {
   height: 60px;
   border: none;
   border-radius: 40%;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bolder;
-  font-size: 30px;
+  font-family: 'Michroma', sans-serif;
+  font-size: 20px;
   color: #eaf3be;
   display: flex;
   justify-content: center;
@@ -80,22 +89,22 @@ button {
   background-color: #660000;
 }
 
-.operator {
+.calculator--operator {
   background-color: #347b98;
 }
 
-.operator:active {
+.calculator--operator:active {
   background-color: #0d1f26;
 }
 
-.number,
+.calculator--number,
 #calculator--period,
 #calculator--clear {
   background-color: #eaf3be;
   color: #262626;
 }
 
-.number:active,
+.calculator--number:active,
 #calculator--period:active,
 #calculator--clear:active {
   background-color: #bad728;

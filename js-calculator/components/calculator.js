@@ -6,8 +6,8 @@ const calculator = {
 };
 
 const updateDisplay = () => {
-  document.getElementById("input").innerHTML = calculator.inputDisplay;
-  document.getElementById("result").innerHTML = calculator.resultDisplay;
+  document.getElementById("calculator__input").innerHTML = calculator.inputDisplay;
+  document.getElementById("calculator__result").innerHTML = calculator.resultDisplay;
 };
 
 export { calculator, updateDisplay };

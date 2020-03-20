@@ -9,6 +9,8 @@ const equal = () => {
 
     if (evaluated) {
       return;
+    } else if (/[+−×÷√]$/.test(inputDisplay)) {
+      return;
     } else {
 
       if (/(\d+\.|\d+\.\d*0+|\d+\.0+)$/.test(inputDisplay)) {
@@ -36,6 +38,7 @@ const equal = () => {
       }
 
       result = eval(str).toString();
+
       calculator.inputDisplay = result;
       calculator.resultDisplay = (newStr) ? `${newStr} = ` : `${inputDisplay} = `;
       calculator.operandHasDecimal = false;

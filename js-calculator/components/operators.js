@@ -36,7 +36,9 @@ const operators = (sign) => {
       break;
 
     default:
-      if (evaluated) {
+      if (inputDisplay == null && sign == "−") {
+        calculator.inputDisplay = sign;
+      } else if (evaluated) {
         calculator.inputDisplay = `${inputDisplay} ${sign} `;
         calculator.resultDisplay = `"Ans = ${inputDisplay}"`;
         calculator.evaluated = false;
@@ -51,7 +53,7 @@ const operators = (sign) => {
       } else if (/(× |÷ )$/.test(inputDisplay) && sign == "−") {
         str = inputDisplay.replace(/ $/, "");
 
-        calculator.inputDisplay = `${str}${sign} `;
+        calculator.inputDisplay = `${str} ${sign}`;
         calculator.operandHasDecimal = false;
       } else if (/( \+ | − | × | ÷ )$/.test(inputDisplay)) {
         str = inputDisplay.replace(/( \+ | − | × | ÷ )$/, ` ${sign} `);

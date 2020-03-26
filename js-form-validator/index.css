@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  max-width: 300px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: rgb(165, 42, 42);
+}
+
+label + input {
+  width: 300px;
+  height: 35px;
+  border-radius: 10px;
+  padding: 0 10px;
+  border: 2px solid rgba(36, 1, 1, 0.185);
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 2px solid rgba(165, 42, 42, 0.602);
+  background-color: rgb(255, 250, 205);
+  font-size: 20px;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 5px;
+}

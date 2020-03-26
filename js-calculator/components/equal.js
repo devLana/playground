@@ -38,6 +38,7 @@ const equal = () => {
       }
 
       result = eval(str).toString();
+      result = (result.includes("-")) ? result.replace("-", "−") : result;
 
       calculator.inputDisplay = result;
       calculator.resultDisplay = (newStr) ? `${newStr} = ` : `${inputDisplay} = `;

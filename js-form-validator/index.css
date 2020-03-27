@@ -19,7 +19,8 @@ body {
 }
 
 .form-container {
-  max-width: 300px;
+  max-width: 320px;
+  padding: 10px;
 }
 
 .form-group {

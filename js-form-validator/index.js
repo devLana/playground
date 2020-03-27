@@ -3,17 +3,19 @@ const email = document.getElementById("email");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirm_password");
+const msg = document.querySelector("#msg");
+const inputs = document.querySelectorAll("input[id]");
 
 const setError = elem => {
-  elem.style.backgroundColor = "rgba(219, 71, 71, 0.856)";
-  elem.style.borderColor = "red";
+  elem.style.backgroundColor = "#ffcccc";
+  elem.style.borderColor = "#cc0000";
 };
 
 const inputHasFocus = e => {
   const { target } = e;
 
-  target.style.backgroundColor = "white";
-  target.style.borderColor = "rgba(36, 1, 1, 0.185)";
+  target.style.backgroundColor = "#fff";
+  target.style.borderColor = "rgba(96, 64, 32, 0.5)";
   target.nextElementSibling.innerHTML = "";
 };
 
@@ -52,7 +54,9 @@ document.querySelector("form").addEventListener("submit", e => {
   ) {
     return false;
   } else {
-    document.write("Registration Successful");
+    msg.innerHTML = "Registration Successful!";
+    msg.className = "success";
+    inputs.forEach(input => input.style.borderColor = "#00ff00");
   }
 });
 

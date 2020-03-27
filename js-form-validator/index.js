@@ -4,7 +4,6 @@ const username = document.getElementById("username");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirm_password");
 
-
 const setError = elem => {
   elem.style.backgroundColor = "rgba(219, 71, 71, 0.856)";
   elem.style.borderColor = "red";
@@ -22,9 +21,7 @@ const catchError = (elem, str) => {
   document.getElementById(elem).innerHTML = str;
 };
 
-
-let nameErr = emailErr = usernameErr = passwordErr = confPassErr = true;
-
+let nameErr = (emailErr = usernameErr = passwordErr = confPassErr = true);
 
 name.addEventListener("blur", validateName);
 name.addEventListener("focus", inputHasFocus);
@@ -50,34 +47,33 @@ document.querySelector("form").addEventListener("submit", e => {
   validatePassword();
   validateConfPassword();
 
-  if ((nameErr || emailErr || usernameErr || passwordErr || confPassErr) === true) {
+  if (
+    (nameErr || emailErr || usernameErr || passwordErr || confPassErr) === true
+  ) {
     return false;
   } else {
     document.write("Registration Successful");
   }
 });
 
-
 function validateName() {
-  const regex = /[!@#$%\^&\*()-=_\+\{\}\[\]\\|;:'",\.<>/\?`~]/;
+  const regex = /^[a-z0-9]+\s?[a-z0-9]*$/i;
 
   try {
     if (name.value === "") {
       setError(name);
       throw "Name can't be empty";
-    } else if (regex.test(name.value)) {
+    } else if (!regex.test(name.value)) {
       setError(name);
       throw "Invalid Name";
     }
 
     nameErr = false;
     name.value.trim();
-
-  } catch(err) {
+  } catch (err) {
     catchError("name--error", err);
   }
 }
-
 
 async function validateEmail() {
   const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -102,11 +98,10 @@ async function validateEmail() {
       emailErr = false;
       email.value.trim();
     }
-  } catch(err) {
+  } catch (err) {
     catchError("email--error", err);
   }
 }
-
 
 async function validateUsername() {
   const regex = /^_*[a-z0-9]+_*[a-z0-9]*_*$/i;
@@ -135,14 +130,12 @@ async function validateUsername() {
       usernameErr = false;
       username.value.trim();
     }
-  } catch(err) {
+  } catch (err) {
     catchError("username--error", err);
   }
 }
 
-
 function validatePassword() {
-
   try {
     if (password.value === "") {
       setError(password);
@@ -153,15 +146,12 @@ function validatePassword() {
     }
 
     passwordErr = false;
-
-  } catch(err) {
+  } catch (err) {
     catchError("password--error", err);
   }
 }
 
-
 function validateConfPassword() {
-
   try {
     if (confirmPassword.value === "") {
       setError(confirmPassword);
@@ -172,8 +162,7 @@ function validateConfPassword() {
     }
 
     confPassErr = false;
-
-  } catch(err) {
+  } catch (err) {
     catchError("confirm_password--error", err);
   }
 }

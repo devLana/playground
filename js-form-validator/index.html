@@ -3,12 +3,15 @@
   <head>
     <title>JavaScript Form Validator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <div id="container">
       <div class="form-container">
-        <form id="form" method="post" autocomplete="off" novalidate>
+        <div id="msg"></div>
+        <form method="post" autocomplete="off" novalidate>
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name">
@@ -26,12 +29,18 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password">
+            <div class="pw-container">
+              <input type="password" id="password">
+              <span class="eye"><i class="fas fa-eye-slash"></i></span>
+            </div>
             <div id="password--error" class="error"></div>
           </div>
           <div class="form-group">
             <label for="confirm_password">Confirm Password</label>
-            <input type="password" id="confirm_password">
+            <div class="pw-container">
+              <input type="password" id="confirm_password">
+              <span class="eye"><i class="fas fa-eye-slash"></i></span>
+            </div>
             <div id="confirm_password--error" class="error"></div>
           </div>
           <div class="form-group">

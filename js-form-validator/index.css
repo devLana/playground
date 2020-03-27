@@ -9,6 +9,8 @@
 html,
 body {
   min-height: 100vh;
+  font-family: 'Baloo Thambi 2', cursive;
+  background-color: #fff;
 }
 
 #container {
@@ -19,11 +21,21 @@ body {
 }
 
 .form-container {
-  max-width: 300px;
+  max-width: 320px;
+  padding: 10px;
+}
+
+.success {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  text-align: center;
+  border-left: 6px solid #cc0099;
+  background-color: #00ff00;
+  color: #cc0099;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .form-group:last-child {
@@ -34,24 +46,53 @@ body {
 label {
   display: inline-block;
   margin-bottom: 5px;
+  margin-left: 5px;
   font-weight: bold;
-  color: rgb(165, 42, 42);
+  color: rgba(165, 42, 42);
 }
 
 label + input {
   width: 300px;
   height: 35px;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 0 10px;
-  border: 2px solid rgba(36, 1, 1, 0.185);
+  border: 2px solid rgba(96, 64, 32, 0.5);
+}
+
+.pw-container {
+  width: 300px;
+  height: 35px;
+  border-radius: 8px;
+  border: 2px solid rgba(96, 64, 32, 0.5);
+  position: relative;
+}
+
+.pw-container input {
+  width: 90%;
+  height: 100%;
+  padding: 0 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.eye {
+  position: absolute;
+  right: 5px;
+  bottom: -1px;
+  z-index: 5;
+  font-size: 20px;
+  color: rgba(165, 42, 42);
+  cursor: pointer;
 }
 
 input[type="submit"] {
   padding: 10px 20px;
   border-radius: 5px;
-  border: 2px solid rgba(165, 42, 42, 0.602);
+  border: 2px solid rgba(165, 42, 42);
   background-color: rgb(255, 250, 205);
   font-size: 20px;
+  color: #a52a2a;
 }
 
 .error {

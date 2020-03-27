@@ -2,7 +2,9 @@ const name = document.getElementById("name");
 const email = document.getElementById("email");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
-const confirm_password = document.getElementById("confirm_password");
+const confirmPassword = document.getElementById("confirm_password");
+
+let nameErr = emailErr = usernameErr = passwordErr = confPassErr = true;
 
 const setError = elem => {
   elem.style.backgroundColor = "rgba(219, 71, 71, 0.856)";
@@ -20,130 +22,140 @@ const inputHasFocus = e => {
   unsetError(target);
 };
 
-const validatePassword = target => {
-  if (target.value === "") {
-    setError(target);
-    throw "Password can't be empty";
-  } else {
-    if (target.value.length < 7) {
-      setError(target);
-      throw "Password should be 7 or more characters";
-    }
-  }
+const catchError = (elem, str) => {
+  document.getElementById(elem).innerHTML = str;
 };
 
-name.addEventListener("blur", onBlurName);
+name.addEventListener("blur", validateName);
 name.addEventListener("focus", inputHasFocus);
 
-function onBlurName(e) {
-  const { target } = e;
+function validateName() {
+  const regex = /[!@#$%\^&\*()-=_\+\{\}\[\]\\|;:'",\.<>/\?`~]/;
 
   try {
-    if (target.value === "") {
-      setError(target);
+    if (name.value === "") {
+      setError(name);
       throw "Name can't be empty";
-    } else {
-      const patt = /[!@#$%\^&\*()-=_\+\{\}\[\]\\|;:'",\.<>/\?`~]/;
-
-      if (patt.test(target.value)) {
-        setError(target);
-        throw "Name can only contain letters, numbers and space";
-      }
+    } else if (regex.test(name.value)) {
+      setError(name);
+      throw "Invalid Name";
     }
-  } catch (err) {
-    document.getElementById("name--error").innerHTML = err;
+
+    nameErr = false;
+    name.value.trim();
+
+  } catch(err) {
+    catchError("name--error", err);
   }
 }
 
-email.addEventListener("blur", onBlurEmail);
+email.addEventListener("blur", validateEmail);
 email.addEventListener("focus", inputHasFocus);
 
-async function onBlurEmail(e) {
-  const { target } = e;
+async function validateEmail() {
+  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   try {
-    if (target.value === "") {
-      setError(target);
-      throw "Email can't be empty";
+    if (email.value === "") {
+      setError(email);
+      throw "E-mail can't be empty";
+    } else if (!regex.test(email.value)) {
+      setError(email);
+      throw "Invalid e-mail";
     } else {
-      const patt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const usersArr = await fetch("users.json");
+      const users = await usersArr.json();
+      users.map(user => {
+        if (user.email.toLowerCase() == email.value.toLowerCase()) {
+          setError(email);
+          throw "E-mail already exists";
+        }
+      });
 
-      if (!patt.test(target.value)) {
-        setError(target);
-        throw "Invalid e-mail";
-      } else {
-        const usersArr = await fetch("users.json");
-        const users = await usersArr.json();
-        users.map(user => {
-          if (user.email.toLowerCase() === target.value.toLowerCase()) {
-            setError(target);
-            throw "This e-mail already exists";
-          }
-        });
-      }
+      emailErr = false;
+      email.value.trim();
     }
   } catch(err) {
-    document.getElementById("email--error").innerHTML = err;
+    catchError("email--error", err);
   }
 }
 
-username.addEventListener("blur", onBlurUsername);
+username.addEventListener("blur", validateUsername);
 username.addEventListener("focus", inputHasFocus);
 
-async function onBlurUsername(e) {
-  const { target } = e;
+async function validateUsername() {
+  const regex = /^_*[a-z0-9]+_*[a-z0-9]*_*$/i;
 
   try {
-    if (target.value === "") {
-      setError(target);
+    if (username.value === "") {
+      setError(username);
       throw "Username can't be empty";
+    } else if (username.value.length < 4) {
+      setError(username);
+      throw "Username must be 4 or more characters";
+    } else if (!regex.test(username.value)) {
+      setError(username);
+      throw "Username can only contain letters, numbers and underscores";
     } else {
-      const patt = /^_*[a-z0-9]+_*[a-z0-9]*_*$/i;
+      const usersArr = await fetch("users.json");
+      const users = await usersArr.json();
 
-      if (target.value.length < 4) {
-        setError(target);
-        throw "Username must be 4 or more characters";
-      } else if (!patt.test(target.value)) {
-        setError(target);
-        throw "Username can only contain letters, numbers and underscore'_'";
-      } else {
-        const usersArr = await fetch("users.json");
-        const users = await usersArr.json();
-        users.map(user => {
-          if (user.username.toLowerCase() === target.value.toLowerCase()) {
-            setError(target);
-            throw "Username already exists";
-          }
-        });
-      }
+      users.map(user => {
+        if (user.username.toLowerCase() === username.value.toLowerCase()) {
+          setError(username);
+          throw "Username already exists";
+        }
+      });
+
+      usernameErr = false;
+      username.value.trim();
     }
   } catch(err) {
-    document.getElementById("username--error").innerHTML = err;
+    catchError("username--error", err);
   }
 }
 
-password.addEventListener("blur", onBlurPassword);
+password.addEventListener("blur", validatePassword);
 password.addEventListener("focus", inputHasFocus);
 
-function onBlurPassword(e) {
-  const { target } = e;
-
+function validatePassword() {
   try {
-    validatePassword(target);
+    if (password.value === "") {
+      setError(password);
+      throw "Password can't be empty";
+    } else if (password.value.length < 7) {
+      setError(password);
+      throw "Username must be 7 or more characters";
+    }
+
+    passwordErr = false;
+
   } catch(err) {
-    document.getElementById("password--error").innerHTML = err;
+    catchError("password--error", err);
   }
 }
 
-confirm_password.addEventListener("blur", onBlurConfirmPassword);
+confirm_password.addEventListener("blur", validateConfPassword);
 confirm_password.addEventListener("focus", inputHasFocus);
 
-function onBlurConfirmPassword(e) {
-  const { target } = e;
-
+function validateConfPassword(e) {
   try {
-    validatePassword(target);
+    if (confirmPassword.value === "") {
+      setError(confirmPassword);
+      throw "Password can't be empty";
+    } else if (confirmPassword.value !== password.value) {
+      setError(confirmPassword);
+      throw "Passwords do not match";
+    }
+
+    confPassErr = false;
+
   } catch(err) {
-    document.getElementById("confirm_password--error").innerHTML = err;
+    catchError("confirm_password--error", err);
   }
 }
+
+document.querySelector("form").addEventListener("submit", e => {
+  e.preventDefault();
+
+});

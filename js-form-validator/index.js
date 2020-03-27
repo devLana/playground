@@ -5,6 +5,24 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirm_password");
 const msg = document.querySelector("#msg");
 const inputs = document.querySelectorAll("input[id]");
+const container = document.querySelectorAll(".pw-container");
+const eyes = document.querySelectorAll(".eye");
+
+eyes.forEach(eye => {
+  eye.addEventListener("click", () => {
+    const child = eye.firstChild;
+    if (child.classList.contains("fa-eye-slash")) {
+      child.className = "fas fa-eye";
+      password.type = "text";
+      confirmPassword.type = "text";
+    } else {
+      child.className = "fas fa-eye-slash";
+      password.type = "password";
+      confirmPassword.type = "password";
+    }
+  });
+});
+
 
 const setError = elem => {
   elem.style.backgroundColor = "#ffcccc";
@@ -14,13 +32,36 @@ const setError = elem => {
 const inputHasFocus = e => {
   const { target } = e;
 
-  target.style.backgroundColor = "#fff";
-  target.style.borderColor = "rgba(96, 64, 32, 0.5)";
-  target.nextElementSibling.innerHTML = "";
+  if (target.id === "password" || target.id === "confirm_password") {
+    target.parentElement.style.backgroundColor = "#fff";
+    target.parentElement.style.borderColor = "rgba(96, 64, 32, 0.5)";
+    target.parentElement.style.outline = "1px solid rgb(77, 77, 243)";
+    target.parentElement.nextElementSibling.innerHTML = "";
+  } else {
+    target.style.backgroundColor = "#fff";
+    target.style.borderColor = "rgba(96, 64, 32, 0.5)";
+    target.style.outline = "1px solid rgb(77, 77, 243)";
+    target.nextElementSibling.innerHTML = "";
+  }
 };
 
 const catchError = (elem, str) => {
   document.getElementById(elem).innerHTML = str;
+};
+
+const detectCapsLock = e => {
+  const { target } = e;
+
+  try {
+    if (e.getModifierState("CapsLock")) {
+      setError(target);
+      throw "Caps lock is on";
+    } else {
+      inputHasFocus(e);
+    }
+  } catch (err) {
+    catchError(target.nextElementSibling.id, err);
+  }
 };
 
 let nameErr = (emailErr = usernameErr = passwordErr = confPassErr = true);
@@ -36,9 +77,11 @@ username.addEventListener("focus", inputHasFocus);
 
 password.addEventListener("blur", validatePassword);
 password.addEventListener("focus", inputHasFocus);
+password.addEventListener("keyup", detectCapsLock);
 
 confirmPassword.addEventListener("blur", validateConfPassword);
 confirmPassword.addEventListener("focus", inputHasFocus);
+confirmPassword.addEventListener("keyup", detectCapsLock);
 
 document.querySelector("form").addEventListener("submit", e => {
   e.preventDefault();
@@ -62,6 +105,7 @@ document.querySelector("form").addEventListener("submit", e => {
 
 function validateName() {
   const regex = /^[a-z0-9]+\s?[a-z0-9]*$/i;
+  name.style.outline = "none";
 
   try {
     if (name.value === "") {
@@ -81,6 +125,7 @@ function validateName() {
 
 async function validateEmail() {
   const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  email.style.outline = "none";
 
   try {
     if (email.value === "") {
@@ -109,6 +154,7 @@ async function validateEmail() {
 
 async function validateUsername() {
   const regex = /^_*[a-z0-9]+_*[a-z0-9]*_*$/i;
+  username.style.outline = "none";
 
   try {
     if (username.value === "") {
@@ -140,12 +186,14 @@ async function validateUsername() {
 }
 
 function validatePassword() {
+  password.parentElement.style.outline = "none";
+
   try {
     if (password.value === "") {
-      setError(password);
+      setError(container[0]);
       throw "Password can't be empty";
     } else if (password.value.length < 7) {
-      setError(password);
+      setError(container[0]);
       throw "Username must be 7 or more characters";
     }
 
@@ -156,12 +204,14 @@ function validatePassword() {
 }
 
 function validateConfPassword() {
+  confirmPassword.parentElement.style.outline = "none";
+
   try {
     if (confirmPassword.value === "") {
-      setError(confirmPassword);
+      setError(container[1]);
       throw "Password can't be empty";
     } else if (confirmPassword.value !== password.value) {
-      setError(confirmPassword);
+      setError(container[1]);
       throw "Passwords do not match";
     }
 

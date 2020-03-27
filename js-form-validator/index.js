@@ -158,4 +158,15 @@ function validateConfPassword(e) {
 document.querySelector("form").addEventListener("submit", e => {
   e.preventDefault();
 
+  validateName();
+  validateEmail();
+  validateUsername();
+  validatePassword();
+  validateConfPassword();
+
+  if ((nameErr || emailErr || usernameErr || passwordErr || confPassErr) === true) {
+    return false;
+  } else {
+    document.write("Registration Successful");
+  }
 });

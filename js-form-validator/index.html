@@ -29,19 +29,17 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <div class="pw-container">
-              <input type="password" id="password">
-              <span class="eye"><i class="fas fa-eye-slash"></i></span>
-            </div>
+            <input type="password" id="password">
             <div id="password--error" class="error"></div>
           </div>
           <div class="form-group">
             <label for="confirm_password">Confirm Password</label>
-            <div class="pw-container">
-              <input type="password" id="confirm_password">
-              <span class="eye"><i class="fas fa-eye-slash"></i></span>
-            </div>
+            <input type="password" id="confirm_password">
             <div id="confirm_password--error" class="error"></div>
+          </div>
+          <div class="form-group">
+            <span class="eye"><i class="fas fa-eye-slash"></i></span>
+            <span>Toggle password visibility</span>
           </div>
           <div class="form-group">
             <input type="submit" value="Submit">
@@ -49,6 +47,6 @@
         </form>
       </div>
     </div>
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

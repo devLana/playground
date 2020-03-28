@@ -9,7 +9,7 @@
 html,
 body {
   min-height: 100vh;
-  font-family: 'Baloo Thambi 2', cursive;
+  font-family: "Baloo Thambi 2", cursive;
   background-color: #fff;
 }
 
@@ -63,7 +63,7 @@ label + input {
   border: 2px solid rgba(96, 64, 32, 0.5);
 }
 
-.eye {
+#eye {
   display: inline-block;
   width: 35px;
   text-align: center;

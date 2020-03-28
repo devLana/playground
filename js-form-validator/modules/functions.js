@@ -1,4 +1,4 @@
-import { eye, password, confirmPassword } from "../index.js";
+import { eye, password, confirmPassword } from "./variables.js";
 
 const setError = elem => {
   elem.style.backgroundColor = "#ffcccc";
@@ -45,10 +45,4 @@ const togglePassword = () => {
   }
 };
 
-export {
-  setError,
-  inputHasFocus,
-  catchError,
-  detectCapsLock,
-  togglePassword
-};
+export { setError, inputHasFocus, catchError, detectCapsLock, togglePassword };

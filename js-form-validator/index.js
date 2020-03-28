@@ -6,17 +6,22 @@ import {
   togglePassword
 } from "./modules/functions.js";
 
-const name = document.getElementById("name");
-const email = document.getElementById("email");
-const username = document.getElementById("username");
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirm_password");
-const msg = document.querySelector("#msg");
-const inputs = document.querySelectorAll("input[id]");
-const eye = document.querySelector(".eye");
+import {
+  name,
+  email,
+  username,
+  password,
+  confirmPassword,
+  msg,
+  inputs,
+  eye
+} from "./modules/variables.js";
 
-
-let nameErr = true, emailErr = true, usernameErr = true, passwordErr = true, confPassErr = true;
+let nameErr = true,
+  emailErr = true,
+  usernameErr = true,
+  passwordErr = true,
+  confPassErr = true;
 
 name.addEventListener("blur", validateName);
 name.addEventListener("focus", inputHasFocus);
@@ -53,7 +58,7 @@ document.querySelector("form").addEventListener("submit", e => {
   } else {
     msg.innerHTML = "Registration Successful!";
     msg.className = "success";
-    inputs.forEach(input => input.style.borderColor = "#00ff00");
+    inputs.forEach(input => (input.style.borderColor = "#00ff00"));
   }
 });
 
@@ -174,5 +179,3 @@ function validateConfPassword() {
     catchError("confirm_password--error", err);
   }
 }
-
-export { password, confirmPassword, eye }

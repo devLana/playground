@@ -1,70 +1,27 @@
-const name = document.getElementById("name");
-const email = document.getElementById("email");
-const username = document.getElementById("username");
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirm_password");
-const msg = document.querySelector("#msg");
-const inputs = document.querySelectorAll("input[id]");
-const container = document.querySelectorAll(".pw-container");
-const eyes = document.querySelectorAll(".eye");
+import {
+  setError,
+  inputHasFocus,
+  catchError,
+  detectCapsLock,
+  togglePassword
+} from "./modules/functions.js";
 
-eyes.forEach(eye => {
-  eye.addEventListener("click", () => {
-    const child = eye.firstChild;
-    if (child.classList.contains("fa-eye-slash")) {
-      child.className = "fas fa-eye";
-      password.type = "text";
-      confirmPassword.type = "text";
-    } else {
-      child.className = "fas fa-eye-slash";
-      password.type = "password";
-      confirmPassword.type = "password";
-    }
-  });
-});
+import {
+  name,
+  email,
+  username,
+  password,
+  confirmPassword,
+  msg,
+  inputs,
+  eye
+} from "./modules/variables.js";
 
-
-const setError = elem => {
-  elem.style.backgroundColor = "#ffcccc";
-  elem.style.borderColor = "#cc0000";
-};
-
-const inputHasFocus = e => {
-  const { target } = e;
-
-  if (target.id === "password" || target.id === "confirm_password") {
-    target.parentElement.style.backgroundColor = "#fff";
-    target.parentElement.style.borderColor = "rgba(96, 64, 32, 0.5)";
-    target.parentElement.style.outline = "1px solid rgb(77, 77, 243)";
-    target.parentElement.nextElementSibling.innerHTML = "";
-  } else {
-    target.style.backgroundColor = "#fff";
-    target.style.borderColor = "rgba(96, 64, 32, 0.5)";
-    target.style.outline = "1px solid rgb(77, 77, 243)";
-    target.nextElementSibling.innerHTML = "";
-  }
-};
-
-const catchError = (elem, str) => {
-  document.getElementById(elem).innerHTML = str;
-};
-
-const detectCapsLock = e => {
-  const { target } = e;
-
-  try {
-    if (e.getModifierState("CapsLock")) {
-      setError(target);
-      throw "Caps lock is on";
-    } else {
-      inputHasFocus(e);
-    }
-  } catch (err) {
-    catchError(target.nextElementSibling.id, err);
-  }
-};
-
-let nameErr = (emailErr = usernameErr = passwordErr = confPassErr = true);
+let nameErr = true,
+  emailErr = true,
+  usernameErr = true,
+  passwordErr = true,
+  confPassErr = true;
 
 name.addEventListener("blur", validateName);
 name.addEventListener("focus", inputHasFocus);
@@ -83,6 +40,8 @@ confirmPassword.addEventListener("blur", validateConfPassword);
 confirmPassword.addEventListener("focus", inputHasFocus);
 confirmPassword.addEventListener("keyup", detectCapsLock);
 
+eye.addEventListener("click", togglePassword);
+
 document.querySelector("form").addEventListener("submit", e => {
   e.preventDefault();
 
@@ -99,7 +58,7 @@ document.querySelector("form").addEventListener("submit", e => {
   } else {
     msg.innerHTML = "Registration Successful!";
     msg.className = "success";
-    inputs.forEach(input => input.style.borderColor = "#00ff00");
+    inputs.forEach(input => (input.style.borderColor = "#00ff00"));
   }
 });
 
@@ -190,10 +149,10 @@ function validatePassword() {
 
   try {
     if (password.value === "") {
-      setError(container[0]);
+      setError(password);
       throw "Password can't be empty";
     } else if (password.value.length < 7) {
-      setError(container[0]);
+      setError(password);
       throw "Username must be 7 or more characters";
     }
 
@@ -208,10 +167,10 @@ function validateConfPassword() {
 
   try {
     if (confirmPassword.value === "") {
-      setError(container[1]);
+      setError(confirmPassword);
       throw "Password can't be empty";
     } else if (confirmPassword.value !== password.value) {
-      setError(container[1]);
+      setError(confirmPassword);
       throw "Passwords do not match";
     }
 

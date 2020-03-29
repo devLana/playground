@@ -17,11 +17,7 @@ import {
   eye
 } from "./modules/variables.js";
 
-let nameErr = true,
-  emailErr = true,
-  usernameErr = true,
-  passwordErr = true,
-  confPassErr = true;
+let nameErr, emailErr, usernameErr, passwordErr, confPassErr;
 
 name.addEventListener("blur", validateName);
 name.addEventListener("focus", inputHasFocus);
@@ -51,14 +47,14 @@ document.querySelector("form").addEventListener("submit", e => {
   validatePassword();
   validateConfPassword();
 
-  if (
-    (nameErr || emailErr || usernameErr || passwordErr || confPassErr) === true
-  ) {
-    return false;
+  if (nameErr || emailErr || usernameErr || passwordErr || confPassErr) {
+    msg.innerHTML = "";
+    msg.className = "";
+    inputs.forEach(input => (input.className = ""));
   } else {
     msg.innerHTML = "Registration Successful!";
-    msg.className = "success";
-    inputs.forEach(input => (input.style.borderColor = "#00ff00"));
+    msg.className = "form-success";
+    inputs.forEach(input => (input.className = "success"));
   }
 });
 
@@ -67,9 +63,11 @@ function validateName() {
 
   try {
     if (name.value === "") {
+      nameErr = true;
       setError(name);
       throw "Name can't be empty";
     } else if (regex.test(name.value)) {
+      nameErr = true;
       setError(name);
       throw "Name can only contain letters or numbers and space";
     }
@@ -86,9 +84,11 @@ async function validateEmail() {
 
   try {
     if (email.value === "") {
+      emailErr = true;
       setError(email);
       throw "E-mail can't be empty";
     } else if (!regex.test(email.value)) {
+      emailErr = true;
       setError(email);
       throw "Invalid e-mail";
     } else {
@@ -96,6 +96,7 @@ async function validateEmail() {
       const users = await usersArr.json();
       users.map(user => {
         if (user.email.toLowerCase() == email.value.toLowerCase()) {
+          emailErr = true;
           setError(email);
           throw "E-mail already exists";
         }
@@ -114,12 +115,15 @@ async function validateUsername() {
 
   try {
     if (username.value === "") {
+      usernameErr = true;
       setError(username);
       throw "Username can't be empty";
     } else if (username.value.length < 4) {
+      usernameErr = true;
       setError(username);
       throw "Username must be 4 or more characters";
     } else if (regex.test(username.value)) {
+      usernameErr = true;
       setError(username);
       throw "Username can only contain letters, numbers and underscores";
     } else {
@@ -128,6 +132,7 @@ async function validateUsername() {
 
       users.map(user => {
         if (user.username.toLowerCase() === username.value.toLowerCase()) {
+          usernameErr = true;
           setError(username);
           throw "Username already exists";
         }
@@ -142,12 +147,13 @@ async function validateUsername() {
 }
 
 function validatePassword() {
-
   try {
     if (password.value === "") {
+      passwordErr = true;
       setError(password);
       throw "Password can't be empty";
     } else if (password.value.length < 7) {
+      passwordErr = true;
       setError(password);
       throw "Username must be 7 or more characters";
     }
@@ -159,12 +165,13 @@ function validatePassword() {
 }
 
 function validateConfPassword() {
-
   try {
     if (confirmPassword.value === "") {
+      confPassErr = true;
       setError(confirmPassword);
       throw "Password can't be empty";
     } else if (confirmPassword.value !== password.value) {
+      confPassErr = true;
       setError(confirmPassword);
       throw "Passwords do not match";
     }

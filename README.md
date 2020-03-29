@@ -7,4 +7,4 @@ You can follow the links below to check them out.
 
 ## [JS Calculator](https://devlana.github.io/playground/js-calculator)
 
-## [JS Form Validator](https://dvelana.github.io/playground/js-form-validator)
+## [JS Form Validator](https://devlana.github.io/playground/js-form-validator)

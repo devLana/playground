@@ -63,16 +63,15 @@ document.querySelector("form").addEventListener("submit", e => {
 });
 
 function validateName() {
-  const regex = /^[a-z0-9]+\s?[a-z0-9]*$/i;
-  name.style.outline = "none";
+  const regex = /[^a-z0-9\s]/i;
 
   try {
     if (name.value === "") {
       setError(name);
       throw "Name can't be empty";
-    } else if (!regex.test(name.value)) {
+    } else if (regex.test(name.value)) {
       setError(name);
-      throw "Invalid Name";
+      throw "Name can only contain letters or numbers and space";
     }
 
     nameErr = false;
@@ -84,7 +83,6 @@ function validateName() {
 
 async function validateEmail() {
   const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  email.style.outline = "none";
 
   try {
     if (email.value === "") {
@@ -112,8 +110,7 @@ async function validateEmail() {
 }
 
 async function validateUsername() {
-  const regex = /^_*[a-z0-9]+_*[a-z0-9]*_*$/i;
-  username.style.outline = "none";
+  const regex = /[^a-z0-9_]/i;
 
   try {
     if (username.value === "") {
@@ -122,7 +119,7 @@ async function validateUsername() {
     } else if (username.value.length < 4) {
       setError(username);
       throw "Username must be 4 or more characters";
-    } else if (!regex.test(username.value)) {
+    } else if (regex.test(username.value)) {
       setError(username);
       throw "Username can only contain letters, numbers and underscores";
     } else {
@@ -145,7 +142,6 @@ async function validateUsername() {
 }
 
 function validatePassword() {
-  password.parentElement.style.outline = "none";
 
   try {
     if (password.value === "") {
@@ -163,7 +159,6 @@ function validatePassword() {
 }
 
 function validateConfPassword() {
-  confirmPassword.parentElement.style.outline = "none";
 
   try {
     if (confirmPassword.value === "") {

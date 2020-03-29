@@ -31,8 +31,8 @@ document.querySelector("form").addEventListener("submit", e => {
   if (name.value == "") {
     setErr("nameErr", "Insert Your Name");
   } else {
-    let patt = /^([a-zA-Z]+)\s?([a-zA-Z]*)$/;
-    if (!patt.test(name.value)) {
+    let patt = /[^a-z0-9 ]/i;
+    if (patt.test(name.value)) {
       setErr("nameErr", "Insert Your Valid Full Name");
     } else {
       removeErr("nameErr");

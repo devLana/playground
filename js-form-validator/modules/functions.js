@@ -1,15 +1,13 @@
 import { eye, password, confirmPassword } from "./variables.js";
 
 const setError = elem => {
-  elem.style.backgroundColor = "#ffcccc";
-  elem.style.borderColor = "#cc0000";
+  elem.className = "danger";
 };
 
 const inputHasFocus = e => {
   const { target } = e;
 
-  target.style.backgroundColor = "#fff";
-  target.style.borderColor = "rgba(96, 64, 32, 0.5)";
+  target.className = "";
   target.nextElementSibling.innerHTML = "";
 };
 
@@ -34,7 +32,7 @@ const detectCapsLock = e => {
 const togglePassword = () => {
   const child = eye.firstChild;
 
-  if (child.classList.contains("fa-eye-slash")) {
+  if (password.type === "password" && confirmPassword.type === "password") {
     child.className = "fas fa-eye";
     password.type = "text";
     confirmPassword.type = "text";

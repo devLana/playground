@@ -50,7 +50,6 @@ document.querySelector("form").addEventListener("submit", e => {
   if (nameErr || emailErr || usernameErr || passwordErr || confPassErr) {
     msg.innerHTML = "";
     msg.className = "";
-    inputs.forEach(input => (input.className = ""));
   } else {
     msg.innerHTML = "Registration Successful!";
     msg.className = "form-success";

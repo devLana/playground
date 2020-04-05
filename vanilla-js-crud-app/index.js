@@ -1,7 +1,13 @@
-import createTable, {addNewUser} from "./modules/core.js";
+import createTable, { addNewUser, editOneUser } from "./modules/core.js";
+import { closeEdit } from "./modules/functions.js";
 
-const form = document.querySelector("form");
+const addUser = document.querySelector("#add__user");
+const editUser = document.querySelector("#edit__user");
+const close = document.querySelector(".ctrl__btns span");
 
 document.body.onload = () => createTable();
 
-form.addEventListener("submit", addNewUser);
+addUser.addEventListener("submit", addNewUser);
+editUser.addEventListener("submit", editOneUser);
+
+close.addEventListener("click", closeEdit);

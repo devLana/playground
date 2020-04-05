@@ -1,16 +1,16 @@
-import { people } from "./people.js";
+import { people } from "./data.js";
 import { editFunc, deleteFunc, getId } from "./functions.js";
 
 export function addNewUser(e) {
   e.preventDefault();
 
-  const name = document.getElementById("name");
-  const occupation = document.getElementById("occupation");
+  const name = document.getElementById("add__user--name");
+  const occupation = document.getElementById("add__user--occupation");
   const person = {
     id: null,
     name: "",
-    occupation: ""
-  }
+    occupation: "",
+  };
 
   if (name.value === "" || occupation.value === "") return;
 
@@ -20,6 +20,31 @@ export function addNewUser(e) {
 
   people.users.push(person);
   createTable();
+  name.value = "";
+  occupation.value = "";
+}
+
+export function editOneUser(e) {
+  e.preventDefault();
+
+  const wrapper = document.querySelector(".form-container");
+  const id = document.getElementById("edit__user--id");
+  const name = document.getElementById("edit__user--name");
+  const occupation = document.getElementById("edit__user--occupation");
+  const index = people.users.findIndex((user) => user.id === Number(id.value));
+
+  if (name.value === "" || occupation.value === "") return;
+  if (
+    name.value === people.users[index].name &&
+    occupation.value === people.users[index].occupation
+  )
+    return;
+
+  people.users[index].name = name.value;
+  people.users[index].occupation = occupation.value;
+  createTable();
+  wrapper.classList.remove("flip");
+  people.edit = false;
 }
 
 export default function createTable() {

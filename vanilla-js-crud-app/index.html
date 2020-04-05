@@ -2,27 +2,64 @@
 <html>
   <head>
     <title>Examples</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
+    <noscript>JavaScript is disabled. This app requires JavaScript to work</noscript>
     <div class="container">
       <h1>Personnel Manager</h1>
       <div class="row">
         <div class="form-container col-md-5">
-          <h3>Add New Users</h3>
-          <form autocomplete="off">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" class="form-control form-control-lg">
-            </div>
-            <div class="form-group">
-              <label for="occupation">Occupation</label>
-              <input type="text" id="occupation" class="form-control form-control-lg">
-            </div>
-            <input type="submit" class="btn btn-primary" value="Submit">
-          </form>
+          <div class="add-user">
+            <h3>Add New User</h3>
+            <form id="add__user" autocomplete="off">
+              <div class="form-group">
+                <label for="add__user--name">Name</label>
+                <input
+                  type="text"
+                  id="add__user--name"
+                  class="form-control form-control-lg"
+                />
+              </div>
+              <div class="form-group">
+                <label for="add__user--occupation">Occupation</label>
+                <input
+                  type="text"
+                  id="add__user--occupation"
+                  class="form-control form-control-lg"
+                />
+              </div>
+              <input type="submit" class="btn btn-primary" value="Submit" />
+            </form>
+          </div>
+          <div class="edit-user">
+            <h3>Edit User</h3>
+            <form id="edit__user" autocomplete="off">
+              <input type="hidden" id="edit__user--id" readonly />
+              <div class="form-group">
+                <label for="edit__user--name">Name</label>
+                <input
+                  type="text"
+                  id="edit__user--name"
+                  class="form-control form-control-lg"
+                />
+              </div>
+              <div class="form-group">
+                <label for="edit__user--occupation">Occupation</label>
+                <input
+                  type="text"
+                  id="edit__user--occupation"
+                  class="form-control form-control-lg"
+                />
+              </div>
+              <div class="ctrl__btns">
+                <span class="btn btn-danger">Cancel</span>
+                <input type="submit" class="btn btn-info" value="Submit" />
+              </div>
+            </form>
+          </div>
         </div>
         <div class="table-responsive-md col-md-7">
           <h3>Users</h3>
@@ -34,8 +71,7 @@
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
       </div>

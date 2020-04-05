@@ -9,11 +9,59 @@ body {
   min-height: 100vh;
 }
 
-input[type=submit] {
-  display: block;
-  margin-left: auto;
+body {
+  perspective: 800px;
+  background-color: #fff;
 }
 
 h1 {
   margin-bottom: 30px;
+}
+
+.form-container {
+  position: relative;
+  height: 275px;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-in;
+}
+
+.flip {
+  transform: rotateY(-180deg);
+}
+
+.add-user,
+.edit-user {
+  width: calc(100% - 30px);
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  backface-visibility: hidden;
+}
+
+.edit-user {
+  transform: rotateY(180deg);
+}
+
+#add__user input[type="submit"] {
+  margin-left: auto;
+  display: block;
+}
+
+.ctrl__btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ctrl__btns span {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .form-container {
+    margin-bottom: 20px;
+  }
 }

@@ -3,27 +3,28 @@ export const people = {
     {
       id: 1,
       name: "Frank",
-      occupation: "Teacher"
+      occupation: "Teacher",
     },
     {
       id: 2,
       name: "Susan",
-      occupation: "Dance Instructor"
+      occupation: "Dance Instructor",
     },
     {
       id: 3,
       name: "Mary",
-      occupation: "Bar Tender"
+      occupation: "Bar Tender",
     },
     {
       id: 4,
       name: "Dan",
-      occupation: "Physician"
+      occupation: "Physician",
     },
     {
       id: 5,
       name: "Ivan",
-      occupation: "Chef"
-    }
-  ]
-}
+      occupation: "Chef",
+    },
+  ],
+  edit: false,
+};

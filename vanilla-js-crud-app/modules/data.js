@@ -1,4 +1,4 @@
-export const people = {
+const data = {
   users: [
     {
       id: 1,
@@ -28,3 +28,5 @@ export const people = {
   ],
   edit: false,
 };
+
+export const people = {...data};

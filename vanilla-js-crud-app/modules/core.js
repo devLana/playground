@@ -18,7 +18,7 @@ export function addNewUser(e) {
   person.name = name.value;
   person.occupation = occupation.value;
 
-  people.users.push(person);
+  people.users = [...people.users, person];
   createTable();
   name.value = "";
   occupation.value = "";

@@ -12,16 +12,16 @@ export function addNewUser(e) {
     occupation: "",
   };
 
-  if (name.value === "" || occupation.value === "") return;
+  if (name.value.trim() === "" || occupation.value.trim() === "") return;
 
   person.id = getId();
-  person.name = name.value;
-  person.occupation = occupation.value;
+  person.name = name.value.trim();
+  person.occupation = occupation.value.trim();
 
   people.users = [...people.users, person];
-  createTable();
   name.value = "";
   occupation.value = "";
+  createTable();
 }
 
 export function editOneUser(e) {
@@ -33,18 +33,18 @@ export function editOneUser(e) {
   const occupation = document.getElementById("edit__user--occupation");
   const index = people.users.findIndex((user) => user.id === Number(id.value));
 
-  if (name.value === "" || occupation.value === "") return;
+  if (name.value.trim() === "" || occupation.value.trim() === "") return;
   if (
-    name.value === people.users[index].name &&
-    occupation.value === people.users[index].occupation
+    name.value.trim() === people.users[index].name &&
+    occupation.value.trim() === people.users[index].occupation
   )
     return;
 
-  people.users[index].name = name.value;
-  people.users[index].occupation = occupation.value;
-  createTable();
+  people.users[index].name = name.value.trim();
+  people.users[index].occupation = occupation.value.trim();
   wrapper.classList.remove("flip");
   people.edit = false;
+  createTable();
 }
 
 export default function createTable() {
@@ -58,6 +58,14 @@ export default function createTable() {
   }
 
   people.users.forEach((user) => {
+    let deleteBtn;
+
+    if (people.edit === false) {
+      deleteBtn = `<button class="delete ${user.id} btn btn-danger">Delete</button>`;
+    } else {
+      deleteBtn = `<button class="delete ${user.id} btn btn-danger disabled">Delete</button>`;
+    }
+
     row += `
       <tr>
         <td>
@@ -68,7 +76,7 @@ export default function createTable() {
         </td>
         <td>
           <button class="edit ${user.id} btn btn-primary">Edit</button>
-          <button class="delete ${user.id} btn btn-danger">Delete</button>
+          ${deleteBtn}
         </td>
       </tr>`;
   });

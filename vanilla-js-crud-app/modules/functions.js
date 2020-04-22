@@ -8,14 +8,14 @@ export function editFunc(btn) {
     const userId = document.getElementById("edit__user--id");
     const name = document.getElementById("edit__user--name");
     const occupation = document.getElementById("edit__user--occupation");
-
-    wrapper.classList.add("flip");
     const userToEdit = people.users.find((user) => user.id === Number(id));
 
+    wrapper.classList.add("flip");
     userId.value = id;
     name.value = userToEdit.name;
     occupation.value = userToEdit.occupation;
     people.edit = true;
+    createTable();
   });
 }
 
@@ -42,4 +42,5 @@ export function closeEdit() {
 
   wrapper.classList.remove("flip");
   people.edit = false;
+  createTable();
 }

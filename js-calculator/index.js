@@ -64,12 +64,27 @@ doc.addEventListener("keyup", (e) => {
   }
 
   if (/[\+\-\*\/%]/.test(key)) {
-    (key == "+") ? operators("+")
-      : (key == "-") ? operators("−")
-      : (key == "*") ? operators("×")
-      : (key == "/") ? operators("÷")
-      :  operators("%");
-    updateDisplay();
+    switch (key) {
+      case "+":
+        operators("+");
+        updateDisplay();
+        break;
+      case "-":
+        operators("−");
+        updateDisplay();
+        break;
+      case "*":
+        operators("×");
+        updateDisplay();
+        break;
+      case "/":
+        operators("÷");
+        updateDisplay();
+        break;
+      case "%":
+        operators("%");
+        updateDisplay();
+    }
   }
 
   if (key == "Enter" || key == "=" ) {

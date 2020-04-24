@@ -60,10 +60,10 @@ export default function createTable() {
   people.users.forEach((user) => {
     let deleteBtn;
 
-    if (people.edit === false) {
-      deleteBtn = `<button class="delete ${user.id} btn btn-danger">Delete</button>`;
-    } else {
+    if (people.edit) {
       deleteBtn = `<button class="delete ${user.id} btn btn-danger disabled">Delete</button>`;
+    } else {
+      deleteBtn = `<button class="delete ${user.id} btn btn-danger">Delete</button>`;
     }
 
     row += `

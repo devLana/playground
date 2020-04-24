@@ -23,8 +23,7 @@ export function deleteFunc(btn) {
   btn.addEventListener("click", (e) => {
     const id = e.target.classList[1];
 
-    if (people.edit === true) return;
-
+    if (people.edit) return;
     people.users = people.users.filter((user) => user.id !== Number(id));
     createTable();
   });

@@ -52,7 +52,7 @@ export default function createTable() {
   let row = "";
 
   if (people.users.length === 0) {
-    row += '<td colspan="3">No data available</td>';
+    row += '<tr><td colspan="3">No data available</td></tr>';
     tbody.innerHTML = row;
     return;
   }

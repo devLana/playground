@@ -8,6 +8,11 @@ const AddUser = ({ add }) => {
     setUser({...user, [name]: value});
   }
 
+  const handleBlur = e => {
+    const { name, value } = e.target;
+    setUser({...user, [name]: value.trim()});
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
     if (!user.name || !user.occupation) return;
@@ -29,6 +34,7 @@ const AddUser = ({ add }) => {
             id="add__name"
             className="form-control form-control-lg"
             onChange={handleChange}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -40,6 +46,7 @@ const AddUser = ({ add }) => {
             id="add__occupation"
             className="form-control form-control-lg"
             onChange={handleChange}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">

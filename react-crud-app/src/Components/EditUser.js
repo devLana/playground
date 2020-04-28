@@ -9,10 +9,14 @@ const EditUser = props => {
     setUser({...user, [name]: value})
   }
 
+  const handleBlur = e => {
+    const { name, value } = e.target;
+    setUser({...user, [name]: value.trim()});
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
-    const userToEdit = props.users.find(userToEdit => userToEdit.id === user.id);
-    if (userToEdit === user) return;
+    console.log(user)
     if (!user.name || !user.occupation) return;
 
     props.edit(user);
@@ -36,6 +40,7 @@ const EditUser = props => {
             id="edit__name"
             className="form-control form-control-lg"
             onChange={handleChange}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -47,6 +52,7 @@ const EditUser = props => {
             id="edit__occupation"
             className="form-control form-control-lg"
             onChange={handleChange}
+            onBlur={handleBlur}
           />
         </div>
         <div className="ctrl__btns">

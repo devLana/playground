@@ -68,10 +68,10 @@ export default function createTable() {
 
     row += `
       <tr>
-        <td>
+        <td class="user__name">
           ${user.name}
         </td>
-        <td>
+        <td class="user__occupation">
           ${user.occupation}
         </td>
         <td>

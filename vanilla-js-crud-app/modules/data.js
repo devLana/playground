@@ -29,4 +29,4 @@ const data = {
   edit: false,
 };
 
-export const people = {...data};
+export const people = { ...data };

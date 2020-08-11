@@ -31,7 +31,7 @@ export function editOneUser(e) {
   const id = document.getElementById("edit__user--id");
   const name = document.getElementById("edit__user--name");
   const occupation = document.getElementById("edit__user--occupation");
-  const index = people.users.findIndex((user) => user.id === Number(id.value));
+  const index = people.users.findIndex(user => user.id === Number(id.value));
 
   if (name.value.trim() === "" || occupation.value.trim() === "") return;
   if (
@@ -57,7 +57,7 @@ export default function createTable() {
     return;
   }
 
-  people.users.forEach((user) => {
+  people.users.forEach(user => {
     let deleteBtn;
 
     if (people.edit) {

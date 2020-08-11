@@ -1,6 +1,6 @@
 import { calculator } from "./calculator.js";
 
-const operators = (sign) => {
+const operators = sign => {
   const { inputDisplay, evaluated } = calculator;
   let str;
 

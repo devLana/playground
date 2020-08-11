@@ -2,13 +2,13 @@ import { people } from "./data.js";
 import createTable from "./core.js";
 
 export function editFunc(btn) {
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener("click", e => {
     const id = e.target.classList[1];
     const wrapper = document.querySelector(".form-container");
     const userId = document.getElementById("edit__user--id");
     const name = document.getElementById("edit__user--name");
     const occupation = document.getElementById("edit__user--occupation");
-    const userToEdit = people.users.find((user) => user.id === Number(id));
+    const userToEdit = people.users.find(user => user.id === Number(id));
 
     wrapper.classList.add("flip");
     userId.value = id;
@@ -20,11 +20,11 @@ export function editFunc(btn) {
 }
 
 export function deleteFunc(btn) {
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener("click", e => {
     const id = e.target.classList[1];
 
     if (people.edit) return;
-    people.users = people.users.filter((user) => user.id !== Number(id));
+    people.users = people.users.filter(user => user.id !== Number(id));
     createTable();
   });
 }

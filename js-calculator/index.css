@@ -25,7 +25,7 @@ body {
   padding: 12px;
   width: 290px;
   background-color: #0d1f26;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: right;
   color: #eaf3be;
 }
@@ -71,7 +71,7 @@ button {
   height: 60px;
   border: none;
   border-radius: 40%;
-  font-family: 'Shadows Into Light', cursive;;
+  font-family: "Shadows Into Light", cursive;
   font-size: 35px;
   font-weight: bold;
   color: #eaf3be;

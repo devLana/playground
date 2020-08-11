@@ -13,7 +13,6 @@ function removeErr(elem) {
   hint.parentElement.classList.remove("form-error");
 }
 
-// Code to run when the form is submitted
 document.querySelector("form").addEventListener("submit", e => {
   e.preventDefault();
 
@@ -25,9 +24,8 @@ document.querySelector("form").addEventListener("submit", e => {
 
   let d, year, birthDate, birthYear, age, title, time, greet;
   let nameVal, genderVal, statusVal, dobVal;
-  let nameErr = genderErr = statusErr = dobErr = true;
+  let nameErr = (genderErr = statusErr = dobErr = true);
 
-  // Validate name field
   if (name.value == "") {
     setErr("nameErr", "Insert Your Name");
   } else {
@@ -41,7 +39,6 @@ document.querySelector("form").addEventListener("submit", e => {
     }
   }
 
-  // Validate gender
   if (gender) {
     setErr("genderErr", "Select Your Gender");
     gender.forEach(button => {
@@ -53,7 +50,6 @@ document.querySelector("form").addEventListener("submit", e => {
     });
   }
 
-  // Validate marital status
   if (status.value == "") {
     setErr("statusErr", "Select Your Marital Status");
   } else {
@@ -62,7 +58,6 @@ document.querySelector("form").addEventListener("submit", e => {
     statusVal = status.value;
   }
 
-  // Validate date of birth
   if (dob.value == "") {
     setErr("dobErr", "Select Your Date of Birth");
   } else {
@@ -71,30 +66,29 @@ document.querySelector("form").addEventListener("submit", e => {
     dobVal = dob.value;
   }
 
-
-  // If there are no errors, output the greeting message
   if ((nameErr || genderErr || statusErr || dobErr) === true) {
     return false;
   } else {
     d = new Date();
 
     time = d.getHours();
-    greet = (time < 12) ? "Good Morning" : (time > 18) ? "Good Evening" : "Good Afternoon";
+    greet =
+      time < 12 ? "Good Morning" : time > 18 ? "Good Evening" : "Good Afternoon";
 
     year = d.getFullYear();
     birthDate = new Date(dobVal);
     birthYear = birthDate.getFullYear();
-    age = ((year - birthYear) >= 18) ? "adult" : "minor";
+    age = year - birthYear >= 18 ? "adult" : "minor";
 
     if (genderVal == "male") {
-      title = (age == "adult") ? "Mr" : "Master";
+      title = age == "adult" ? "Mr" : "Master";
     }
 
     if (genderVal == "female") {
       if (age == "minor") {
         title = "Miss";
       } else {
-        title = (statusVal == "single" || statusVal == "divorced") ? "Miss" : "Mrs"
+        title = statusVal == "single" || statusVal == "divorced" ? "Miss" : "Mrs";
       }
     }
 

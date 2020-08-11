@@ -6,4 +6,4 @@ It has many features some of which include taking the square root and percentage
 
 The calculator also has keyboard support.
 
-[A React version of the calculator](https://codepen.io/Ade_Lana/pen/RwNRgJa) that I built can also be found on Codepen.
+A React version of the calculator that I built can also be found on [Codepen](https://codepen.io/Ade_Lana/pen/RwNRgJa).

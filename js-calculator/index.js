@@ -6,11 +6,10 @@ import { period } from "./components/period.js";
 import { clear } from "./components/clear.js";
 import { equal } from "./components/equal.js";
 
-
 const doc = document.documentElement;
 const keys = document.getElementById("calculator__buttons");
 
-keys.addEventListener("click", (e) => {
+keys.addEventListener("click", e => {
   const btn = e.target;
 
   if (btn.className == "calculator--number") {
@@ -24,7 +23,7 @@ keys.addEventListener("click", (e) => {
   }
 
   if (btn.id == "calculator--clear") {
-    clear()
+    clear();
     updateDisplay();
   }
 
@@ -44,8 +43,7 @@ keys.addEventListener("click", (e) => {
   }
 });
 
-
-doc.addEventListener("keyup", (e) => {
+doc.addEventListener("keyup", e => {
   const { key } = e;
 
   if (/^\d/.test(key)) {
@@ -87,16 +85,16 @@ doc.addEventListener("keyup", (e) => {
     }
   }
 
-  if (key == "Enter" || key == "=" ) {
+  if (key == "Enter" || key == "=") {
     equal();
     updateDisplay();
   }
 });
 
-doc.addEventListener("keydown", (e) => {
+doc.addEventListener("keydown", e => {
   const { key } = e;
   if (key == "Backspace") {
-    clear()
+    clear();
     updateDisplay();
   }
 });

@@ -1,6 +1,6 @@
 import { calculator } from "./calculator.js";
 
-const inputNumber = (num) => {
+const inputNumber = num => {
   const { inputDisplay, evaluated } = calculator;
 
   if (inputDisplay == null) {

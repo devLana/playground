@@ -7,4 +7,4 @@ const allClear = () => {
   calculator.evaluated = false;
 };
 
-export {allClear as default};
+export { allClear as default };

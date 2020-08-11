@@ -1,4 +1,3 @@
-
 # [JavaScript Greeter App](https://devlana.github.io/playground/js-greeter-app/)
 
 You can check out the app [here](https://devlana.github.io/playground/js-greeter-app/).

@@ -3,7 +3,7 @@ import {
   inputHasFocus,
   catchError,
   detectCapsLock,
-  togglePassword
+  togglePassword,
 } from "./modules/functions.js";
 
 import {
@@ -14,7 +14,7 @@ import {
   confirmPassword,
   msg,
   inputs,
-  eye
+  eye,
 } from "./modules/variables.js";
 
 let nameErr, emailErr, usernameErr, passwordErr, confPassErr;

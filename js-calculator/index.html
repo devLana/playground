@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>JavaScript Calculator</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light|Poppins:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
-</head>
-<body>
-  <div class="wrapper">
-    <div class="calculator">
-      <div id="calculator__display">
-        <div id="calculator__result"></div>
-        <div id="calculator__input"></div>
-      </div>
-      <div id="calculator__buttons">
-        <button id="calculator--all-clear" value="AC">AC</button>
-        <button class="calculator--operator" value="%">&#37;</button>
-        <button class="calculator--operator" value="√">&radic;</button>
-        <button class="calculator--operator" value="+">&#43;</button>
+  <head>
+    <title>JavaScript Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Shadows+Into+Light|Poppins:ital@1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="calculator">
+        <div id="calculator__display">
+          <div id="calculator__result"></div>
+          <div id="calculator__input"></div>
+        </div>
+        <div id="calculator__buttons">
+          <button id="calculator--all-clear" value="AC">AC</button>
+          <button class="calculator--operator" value="%">&#37;</button>
+          <button class="calculator--operator" value="√">&radic;</button>
+          <button class="calculator--operator" value="+">&#43;</button>
 
-        <button class="calculator--number" value="7">7</button>
-        <button class="calculator--number" value="8">8</button>
-        <button class="calculator--number" value="9">9</button>
-        <button class="calculator--operator" value="−">&minus;</button>
+          <button class="calculator--number" value="7">7</button>
+          <button class="calculator--number" value="8">8</button>
+          <button class="calculator--number" value="9">9</button>
+          <button class="calculator--operator" value="−">&minus;</button>
 
-        <button class="calculator--number" value="4">4</button>
-        <button class="calculator--number" value="5">5</button>
-        <button class="calculator--number" value="6">6</button>
-        <button class="calculator--operator" value="×">&times;</button>
+          <button class="calculator--number" value="4">4</button>
+          <button class="calculator--number" value="5">5</button>
+          <button class="calculator--number" value="6">6</button>
+          <button class="calculator--operator" value="×">&times;</button>
 
-        <button class="calculator--number" value="1">1</button>
-        <button class="calculator--number" value="2">2</button>
-        <button class="calculator--number" value="3">3</button>
-        <button class="calculator--operator" value="÷">&divide;</button>
+          <button class="calculator--number" value="1">1</button>
+          <button class="calculator--number" value="2">2</button>
+          <button class="calculator--number" value="3">3</button>
+          <button class="calculator--operator" value="÷">&divide;</button>
 
-        <button id="calculator--period" value=".">&#46;</button>
-        <button class="calculator--number" value="0">0</button>
-        <button id="calculator--clear" value="C">C</button>
-        <button id="calculator--equals" value="=">&#61;</button>
+          <button id="calculator--period" value=".">&#46;</button>
+          <button class="calculator--number" value="0">0</button>
+          <button id="calculator--clear" value="C">C</button>
+          <button id="calculator--equals" value="=">&#61;</button>
+        </div>
       </div>
     </div>
-  </div>
-  <script type="module" src="index.js"></script>
-</body>
+    <script type="module" src="index.js"></script>
+  </body>
 </html>

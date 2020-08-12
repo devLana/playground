@@ -1,8 +1,17 @@
-const sentences = ["Interior Designer", "Lifestyle Strategist", "Transformer"];
-const writeSpeed = 50;
-const pauseWrite = 200;
-const eraseSpeed = 10;
-const pauseErase = 700;
+const sentences = [
+  "Either you run the day, or the day runs you.",
+  "The most common way people give up their power is by thinking they don’t have any.",
+  "The only way to do great work is to love what you do.",
+  "I didn’t fail the test. I just found 100 ways to do it wrong.",
+  "Either write something worth reading or do something worth writing.",
+  "There are no traffic jams along the extra mile.",
+  "Challenges are what make life interesting and overcoming them is what makes life meaningful.",
+];
+
+const writeSpeed = 65;
+const pauseWrite = 1250;
+const eraseSpeed = 15;
+const pauseErase = 1700;
 
 let sentence = "";
 let index = 0;
@@ -40,7 +49,7 @@ function typewriter() {
     }
   }
 
-  document.querySelector("#demo").innerHTML = sentence;
-};
+  document.querySelector("#demo").innerHTML = sentence + '<span id="cursor"></span>';
+}
 
 typewriter();

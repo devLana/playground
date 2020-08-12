@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Courier, "Courier New", monospace;
+  font-size: 30px;
+  color: #fff;
+  background-color: #030a13;
+  position: relative;
+  height: 100vh;
+}
+
+#demo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#cursor {
+  border-right: 2px solid #fff;
+  margin-left: 7px;
+  animation: blink 0.7s ease infinite;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

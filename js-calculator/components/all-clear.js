@@ -1,4 +1,4 @@
-import { calculator } from "./calculator.js";
+import calculator from "./calculator.js";
 
 const allClear = () => {
   calculator.inputDisplay = null;
@@ -7,4 +7,4 @@ const allClear = () => {
   calculator.evaluated = false;
 };
 
-export { allClear as default };
+export default allClear;

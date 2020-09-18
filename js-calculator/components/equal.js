@@ -1,4 +1,4 @@
-import { calculator } from "./calculator.js";
+import calculator from "./calculator.js";
 
 const equal = () => {
   const { inputDisplay, evaluated } = calculator;
@@ -6,36 +6,36 @@ const equal = () => {
   let newStr, strArrOne, strArrTwo, result;
 
   if (inputDisplay != null) {
-    if (evaluated) {
-      return;
-    } else if (/[+−×÷√]$/.test(inputDisplay)) {
+    if (evaluated || /(\+ |− |× |÷ |√)$/.test(inputDisplay)) {
       return;
     } else {
-      if (/(\d+\.|\d+\.\d*0+|\d+\.0+)$/.test(inputDisplay)) {
+      if (/(\.|0+|\.0+)$/.test(inputDisplay)) {
         newStr = inputDisplay.replace(/(\.|0+|\.0+)$/, "");
       }
 
       if (str.includes("%")) {
         strArrOne = str.match(/\d+\.?\d*%/g);
-        strArrTwo = strArrOne.map(item => {
-          return (parseFloat(item.replace("%", "")) / 100).toString();
-        });
-        strArrTwo.forEach(num => (str = str.replace(/\d+\.?\d*%/, num)));
+        strArrTwo = strArrOne
+          .map(item => {
+            return `${parseFloat(item.replace("%", "")) / 100}`;
+          })
+          .forEach(item => (str = str.replace(/\d+\.?\d*%/, item)));
       }
 
       if (str.includes("√")) {
         strArrOne = str.match(/√\d+\.?\d*/g);
-        strArrTwo = strArrOne.map(item => {
-          return Math.sqrt(parseFloat(item.replace("√", ""))).toString();
-        });
-        strArrTwo.forEach(num => (str = str.replace(/√\d+\.?\d*/, num)));
+        strArrTwo = strArrOne
+          .map(item => {
+            return `${Math.sqrt(parseFloat(item.replace("√", "")))}`;
+          })
+          .forEach(item => (str = str.replace(/√\d+\.?\d*/, item)));
       }
 
       if (/[−×÷]/.test(str)) {
         str = str.replace(/−/g, "-").replace(/×/g, "*").replace(/÷/g, "/");
       }
 
-      result = eval(str).toString();
+      result = `${eval(str)}`
       result = result.includes("-") ? result.replace("-", "−") : result;
 
       calculator.inputDisplay = result;
@@ -46,4 +46,4 @@ const equal = () => {
   }
 };
 
-export { equal };
+export default equal;

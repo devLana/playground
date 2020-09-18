@@ -1,4 +1,4 @@
-import { calculator } from "./calculator.js";
+import calculator from "./calculator.js";
 
 const period = (dot) => {
   const { inputDisplay, operandHasDecimal, evaluated } = calculator;
@@ -26,4 +26,4 @@ const period = (dot) => {
   }
 };
 
-export { period };
+export default period;

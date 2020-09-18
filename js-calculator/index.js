@@ -1,10 +1,10 @@
 import { updateDisplay } from "./components/calculator.js";
-import { inputNumber } from "./components/numbers.js";
-import { operators } from "./components/operators.js";
+import inputNumber from "./components/numbers.js";
+import operators from "./components/operators.js";
 import allClear from "./components/all-clear.js";
-import { period } from "./components/period.js";
-import { clear } from "./components/clear.js";
-import { equal } from "./components/equal.js";
+import period from "./components/period.js";
+import clear from "./components/clear.js";
+import equal from "./components/equal.js";
 
 const doc = document.documentElement;
 const keys = document.getElementById("calculator__buttons");
@@ -46,6 +46,7 @@ keys.addEventListener("click", e => {
 doc.addEventListener("keyup", e => {
   const { key } = e;
 
+  // if (/\d/.test(key)) {
   if (/^\d/.test(key)) {
     inputNumber(key);
     updateDisplay();

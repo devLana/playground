@@ -5,9 +5,9 @@ const calculator = {
   evaluated: false,
 };
 
-const updateDisplay = () => {
+export const updateDisplay = () => {
   document.getElementById("calculator__input").innerHTML = calculator.inputDisplay;
   document.getElementById("calculator__result").innerHTML = calculator.resultDisplay;
 };
 
-export { calculator, updateDisplay };
+export default calculator;

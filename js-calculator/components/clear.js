@@ -1,4 +1,4 @@
-import { calculator } from "./calculator.js";
+import calculator from "./calculator.js";
 
 const clear = () => {
   const { inputDisplay, evaluated } = calculator;
@@ -32,4 +32,4 @@ const clear = () => {
   }
 };
 
-export { clear };
+export default clear;

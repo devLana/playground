@@ -1,4 +1,4 @@
-import { calculator } from "./calculator.js";
+import calculator from "./calculator.js";
 
 const inputNumber = num => {
   const { inputDisplay, evaluated } = calculator;
@@ -23,4 +23,4 @@ const inputNumber = num => {
   }
 };
 
-export { inputNumber };
+export default inputNumber;

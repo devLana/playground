@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/icon-48.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-96.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-128.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-152.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-384.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#fff" />
+    <meta name="theme-color" content="#fff" />
+    <title>JavaScript Playground</title>
+    <style>
+      *{padding:0;margin:0;box-sizing:inherit}html{box-sizing:border-box}body{min-height:100vh;padding:20px}.container{max-width:1000px;margin:0 auto}h1{font-size:22px;padding:15px 0;margin-bottom:20px;border-bottom:1px solid rgba(0,0,0,.1)}p{padding:30px 0;font-size:20px}#apps{list-style:none}.app{border-bottom:1px solid rgba(0,0,0,.1);padding:20px 0}.app-link{text-decoration:none;color:rgba(22,22,118,.755);font-weight:700;font-size:19px}.app-link:hover{text-decoration:underline}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Javascript Playground</h1>
+      <p>
+        A playground for front end JavaScript apps. You can check the links
+        below to view the live demos.
+      </p>
+      <ul id="apps">
+        <li class="app">
+          <a href="/js-greeter-app/" class="app-link">JS Greeter App</a>
+        </li>
+        <li class="app">
+          <a href="/js-calculator/" class="app-link">JS Calculator</a>
+        </li>
+        <li class="app">
+          <a href="/js-form-validator/" class="app-link">JS Form Validator</a>
+        </li>
+        <li class="app">
+          <a href="/vanilla-js-crud-app/" class="app-link">
+            Vanilla JS CRUD App
+          </a>
+        </li>
+        <li class="app">
+          <a href="/typewriter/" class="app-link">Typewriter</a>
+        </li>
+      </ul>
+    </div>
+    <script>
+      "serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").then(e=>{console.log("SW registered")}).catch(e=>{console.log("SW registration failed")})});
+    </script>
+  </body>
+</html>

@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/icons/icon-48.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-96.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-128.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-152.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-384.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-512.png" />
+    <link rel="manifest" href="/playground/manifest.json">
+    <link rel="apple-touch-icon" href="/playground/icons/icon-48.png" />
+    <link rel="apple-touch-icon" href="/playground/icons/icon-96.png" />
+    <link rel="apple-touch-icon" href="/playground/icons/icon-128.png" />
+    <link rel="apple-touch-icon" href="/playground/icons/icon-152.png" />
+    <link rel="apple-touch-icon" href="/playground/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/playground/icons/icon-384.png" />
+    <link rel="apple-touch-icon" href="/playground/icons/icon-512.png" />
     <meta name="apple-mobile-web-app-status-bar" content="#fff" />
     <meta name="theme-color" content="#fff" />
     <title>JavaScript Playground</title>
@@ -28,26 +28,26 @@
       </p>
       <ul id="apps">
         <li class="app">
-          <a href="/js-greeter-app/" class="app-link">JS Greeter App</a>
+          <a href="/playground/js-greeter-app/" class="app-link">JS Greeter App</a>
         </li>
         <li class="app">
-          <a href="/js-calculator/" class="app-link">JS Calculator</a>
+          <a href="/playground/js-calculator/" class="app-link">JS Calculator</a>
         </li>
         <li class="app">
-          <a href="/js-form-validator/" class="app-link">JS Form Validator</a>
+          <a href="/playground/js-form-validator/" class="app-link">JS Form Validator</a>
         </li>
         <li class="app">
-          <a href="/vanilla-js-crud-app/" class="app-link">
+          <a href="/playground/vanilla-js-crud-app/" class="app-link">
             Vanilla JS CRUD App
           </a>
         </li>
         <li class="app">
-          <a href="/typewriter/" class="app-link">Typewriter</a>
+          <a href="/playground/typewriter/" class="app-link">Typewriter</a>
         </li>
       </ul>
     </div>
     <script>
-      "serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").then(e=>{console.log("SW registered")}).catch(e=>{console.log("SW registration failed")})});
+      "serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/playground/sw.js").then(e=>{console.log("SW registered")}).catch(e=>{console.log("SW registration failed")})});
     </script>
   </body>
 </html>

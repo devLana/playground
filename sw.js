@@ -1,1 +1,43 @@
-const cacheName="playgroundCache-v1.1",staticFiles=["/playground/"];self.addEventListener("install",e=>{e.waitUntil(caches.open(cacheName).then(e=>e.addAll(staticFiles)))}),self.addEventListener("fetch",e=>{e.respondWith(caches.match(e.request).then(t=>t||fetch(e.request).then(t=>{if(200!==t.status)throw new Error(t.statusText);const a=t.clone();return caches.open(cacheName).then(t=>{t.put(e.request,a)}),t}).catch(e=>{console.log("Request failed -",e)})))}),self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(e=>Promise.all(e.map(e=>{if(e!==cacheName)return caches.delete(e)}))))});
+const cacheName = "playgroundCache-v1.2";
+const staticFiles = [
+  "/playground/",
+  "/playground/assets/index.css",
+  "/playground/assets/index.js",
+];
+
+self.addEventListener("install", e => {
+  e.waitUntil(caches.open(cacheName).then(cache => cache.addAll(staticFiles)));
+});
+
+self.addEventListener("fetch", e => {
+  e.respondWith(
+    caches.match(e.request).then(res => {
+      if (res) return res;
+
+      return fetch(e.request).then(response => {
+        if (response.status !== 200) return;
+
+        const responseToCache = response.clone();
+        caches.open(cacheName).then(cache => {
+          cache.put(e.request, responseToCache);
+        });
+
+        return response;
+      });
+    })
+  );
+});
+
+self.addEventListener("activate", e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(key => {
+          if (key !== cacheName) {
+            return caches.delete(key);
+          }
+        })
+      )
+    )
+  );
+});

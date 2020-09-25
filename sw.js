@@ -1,8 +1,11 @@
-const cacheName = "playgroundCache-v1.12";
+const cacheName = "playgroundCache-v1.13";
 const staticFiles = [
   "/playground/",
   "/playground/assets/index.css",
   "/playground/assets/index.js",
+  "https://fonts.googleapis.com/css?family=Shadows+Into+Light|Poppins:ital@1&display=swap",
+  "https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css",
 ];
 
 self.addEventListener("install", e => {

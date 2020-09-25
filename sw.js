@@ -1,4 +1,4 @@
-const cacheName = "playgroundCache-v1.2";
+const cacheName = "playgroundCache-v1.12";
 const staticFiles = [
   "/playground/",
   "/playground/assets/index.css",

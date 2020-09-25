@@ -15,7 +15,7 @@ const period = (dot) => {
     return;
   } else {
     if (!operandHasDecimal) {
-      if (/( \+ | − |−| × | ÷ | ×− | ÷− |√)$/.test(inputDisplay)) {
+      if (/( \+ | − |−| × | ÷ |√)$/.test(inputDisplay)) {
         calculator.inputDisplay = `${inputDisplay}0${dot}`;
         calculator.operandHasDecimal = true;
       } else {

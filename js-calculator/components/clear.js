@@ -17,6 +17,11 @@ const clear = () => {
 
         calculator.inputDisplay = str;
         calculator.operandHasDecimal = regex.test(inputDisplay) ? true : false;
+      } else if (/\.$/.test(inputDisplay)) {
+        str = inputDisplay.replace(/\.$/, "");
+
+        calculator.inputDisplay = str;
+        calculator.operandHasDecimal = false;
       } else if (inputDisplay.length == 1) {
         calculator.inputDisplay = null;
       } else {

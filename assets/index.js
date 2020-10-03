@@ -19,6 +19,10 @@ const links = [
     link: "/playground/typewriter/",
     name: "Typewriter",
   },
+  {
+    link: "/playground/todo-app/",
+    name: "Todo App",
+  },
 ];
 
 const wrapper = document.querySelector(".list-wrapper");

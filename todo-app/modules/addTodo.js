@@ -9,7 +9,7 @@ const getId = todos => {
 };
 
 const saveTodo = e => {
-  const todo = e.target.value.trim();
+  const todo = e.target.value.trim().replace(/ +/g, " ");
   const { getTodos, setTodos } = storage;
   const todos = getTodos();
 
@@ -29,7 +29,7 @@ const saveTodo = e => {
   }
 
   e.target.value = "";
-  // e.target.blur();
+  e.target.blur();
   showTodos();
 };
 

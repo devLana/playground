@@ -4,7 +4,7 @@ const todosList = todos => {
   todos.forEach(({ id, content }) => {
     output += `
       <li class="todo">
-        <div class="content">
+        <div class="content content-${id}">
           <button class="complete__btn ${id}"></button>
           <span class="todo__content">${content}</span>
         </div>

@@ -51,7 +51,7 @@ h1 {
 #header {
   margin-bottom: 30px;
 }
-
+.edit__input,
 #todo__input {
   display: block;
   width: 100%;
@@ -62,9 +62,10 @@ h1 {
   color: #08142b;
 }
 
+.edit__input:focus,
 #todo__input:focus {
   border-color: transparent;
-  box-shadow: 0 0 3px 5px #448d76;
+  box-shadow: 0 0 2px 4px #448d76;
   outline: none;
 }
 

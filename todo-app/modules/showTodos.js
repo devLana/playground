@@ -3,6 +3,7 @@ import todosList from "./todosList.js";
 import deleteTodo from "./deleteTodo.js";
 import markAsImportant from "./importantTodo.js";
 import completeTodo from "./completeTodo.js";
+import editTodo from "./editTodo.js";
 
 const showTodos = () => {
   const todos = storage.getTodos();
@@ -23,10 +24,12 @@ const showTodos = () => {
   const deleteBtn = document.querySelectorAll(".delete__btn");
   const importantBtn = document.querySelectorAll(".important__btn");
   const completeBtn = document.querySelectorAll(".complete__btn");
+  const editBtn = document.querySelectorAll(".edit__btn");
 
   deleteBtn.forEach(deleteTodo);
   importantBtn.forEach(markAsImportant);
   completeBtn.forEach(completeTodo);
+  editBtn.forEach(editTodo);
 };
 
 export default showTodos;

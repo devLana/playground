@@ -29,6 +29,7 @@ const saveTodo = e => {
   }
 
   e.target.value = "";
+  // e.target.blur();
   showTodos();
 };
 

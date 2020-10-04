@@ -46,11 +46,10 @@ h1 {
   color: #1258dc;
   font-size: 1.7rem;
   border: none;
-  cursor: pointer;
 }
 
 #header {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 #todo__input {
@@ -67,6 +66,10 @@ h1 {
   border-color: transparent;
   box-shadow: 0 0 3px 5px #448d76;
   outline: none;
+}
+
+.no__todos {
+  font-size: 1.8rem;
 }
 
 #todos__list {
@@ -99,7 +102,7 @@ h1 {
   cursor: pointer;
 }
 
-#todo__content {
+.todo__content {
   font-size: 1.2rem;
   flex: 0 0 calc(100% - 20px);
   line-height: 1.5rem;

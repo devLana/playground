@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Baloo Thambi 2", cursive;
+  color: #08142b;
+}
+
+.container {
+  padding: 5px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#todo-app {
+  padding: 10px;
+  width: 90%;
+  max-width: 350px;
+  min-width: 260px;
+  min-height: 75vh;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+#nav {
+  padding: 15px 0;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsla(161, 35%, 41%, 0.7);
+}
+
+h1 {
+  color: #448d76;
+  font-size: 1.7rem;
+}
+
+.delete__all {
+  color: #1258dc;
+  font-size: 1.7rem;
+  border: none;
+}
+
+#header {
+  margin-bottom: 30px;
+}
+.edit__input,
+#todo__input {
+  display: block;
+  width: 100%;
+  padding: 11px 5px;
+  border-radius: 5px;
+  border: 2px solid #448d76;
+  font-size: 1rem;
+  color: #08142b;
+}
+
+.edit__input:focus,
+#todo__input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 2px 4px #448d76;
+  outline: none;
+}
+
+.no__todos {
+  font-size: 1.8rem;
+}
+
+#todos__list {
+  list-style: none;
+}
+
+.todo {
+  border: 1px solid #448d76;
+  border-bottom: none;
+  padding: 15px 10px;
+}
+
+.todo:last-child {
+  border-bottom: 1px solid #448d76;
+}
+
+.content {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.complete__btn {
+  margin-right: 10px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid #08142b;
+  background-color: rgba(32, 78, 163, 0.275);
+  flex: 0 0 11px;
+  cursor: pointer;
+}
+
+.completed {
+  color: #7fbd32;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+.important {
+  color: #ff9100;
+}
+
+.todo__content {
+  font-size: 1.2rem;
+  flex: 0 0 calc(100% - 20px);
+  line-height: 1.5rem;
+  word-break: break-word;
+}
+
+.todo__action--btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo__action--btns span {
+  padding: 0 22px;
+}
+
+.edit__btn,
+.important__btn,
+.delete__btn {
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.edit__btn {
+  color: #448d76;
+}
+
+.important__btn {
+  color: #08142b;
+}
+
+.delete__btn {
+  color: #1258dc;
+}

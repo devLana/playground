@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Todo App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="todo-app">
+        <nav id="nav">
+          <h1>Todo App</h1>
+          <button class="delete__all" title="Delete All">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </nav>
+        <main id="main">
+          <header id="header">
+            <input
+              type="text"
+              placeholder="What would you like to do?"
+              id="todo__input"
+            />
+          </header>
+          <section id="todos__container"></section>
+        </main>
+      </div>
+    </div>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

@@ -9,6 +9,7 @@
 body {
   font-family: "Baloo Thambi 2", cursive;
   color: #08142b;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
@@ -46,6 +47,11 @@ h1 {
   color: #1258dc;
   font-size: 1.7rem;
   border: none;
+  background-color: transparent;
+}
+
+.far {
+  font-weight: bold;
 }
 
 #header {
@@ -69,14 +75,6 @@ h1 {
   outline: none;
 }
 
-.no__todos {
-  font-size: 1.8rem;
-}
-
-#todos__list {
-  list-style: none;
-}
-
 .todo {
   border: 1px solid #448d76;
   border-bottom: none;
@@ -94,13 +92,15 @@ h1 {
 }
 
 .complete__btn {
-  margin-right: 10px;
-  width: 11px;
-  height: 11px;
+  margin-right: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 1px solid #08142b;
+  border: 2px solid #08142b;
   background-color: rgba(32, 78, 163, 0.275);
-  flex: 0 0 11px;
+  color: #7fbd32;
+  font-size: 12px;
+  flex: 0 0 12px;
   cursor: pointer;
 }
 
@@ -111,12 +111,11 @@ h1 {
 }
 
 .important {
-  color: #ff9100;
+  color: #965500;
 }
 
 .todo__content {
   font-size: 1.2rem;
-  flex: 0 0 calc(100% - 20px);
   line-height: 1.5rem;
   word-break: break-word;
 }
@@ -130,22 +129,9 @@ h1 {
   padding: 0 22px;
 }
 
-.edit__btn,
-.important__btn,
-.delete__btn {
+.todo__action--btns span button {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-}
-
-.edit__btn {
-  color: #448d76;
-}
-
-.important__btn {
-  color: #08142b;
-}
-
-.delete__btn {
-  color: #1258dc;
+  background-color: transparent;
 }

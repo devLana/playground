@@ -11,7 +11,7 @@ const showTodos = () => {
   const deleteAllBtn = document.querySelector(".delete__all");
 
   if (!todos) {
-    todosContainer.innerHTML = '<p class="no__todos">You have no todos</p>';
+    todosContainer.innerHTML = '<p style="font-size: 1.8rem">You have no todos</p>';
     deleteAllBtn.disabled = true;
     deleteAllBtn.style.cursor = "not-allowed";
     return;
@@ -21,10 +21,10 @@ const showTodos = () => {
   deleteAllBtn.removeAttribute("disabled");
   deleteAllBtn.style.cursor = "pointer";
 
-  const deleteBtn = document.querySelectorAll(".delete__btn");
-  const importantBtn = document.querySelectorAll(".important__btn");
+  const deleteBtn = document.querySelectorAll(".delete__btn button");
+  const importantBtn = document.querySelectorAll(".important__btn button");
   const completeBtn = document.querySelectorAll(".complete__btn");
-  const editBtn = document.querySelectorAll(".edit__btn");
+  const editBtn = document.querySelectorAll(".edit__btn button");
 
   deleteBtn.forEach(deleteTodo);
   importantBtn.forEach(markAsImportant);

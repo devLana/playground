@@ -8,7 +8,7 @@ const evaluate = str => {
     result
       .match(/\d+\.?\d*%/g)
       .map(item => {
-        return `${parseFloat(item.replace("%", "")) / 10}`;
+        return `${parseFloat(item.replace("%", "")) / 100}`;
       })
       .forEach(item => (result = result.replace(/\d+\.?\d*%/, item)));
   }

@@ -11,9 +11,9 @@ const clear = () => {
       if (/( × −| ÷ −)$/.test(inputDisplay)) {
         str = inputDisplay.replace(/−$/, "");
         calculator.inputDisplay = str;
-      } else if (/( \+ | − | × | ÷ |%)$/.test(inputDisplay)) {
-        const regex = /\d+\.\d+( \+ | − | × | ÷ |%)$/;
-        str = inputDisplay.replace(/( \+ | − | × | ÷ |%)$/, "");
+      } else if (/( \+ | − | × | ÷ )$/.test(inputDisplay)) {
+        const regex = /\d+\.\d+%?( \+ | − | × | ÷ )$/;
+        str = inputDisplay.replace(/( \+ | − | × | ÷ )$/, "");
 
         calculator.inputDisplay = str;
         calculator.operandHasDecimal = regex.test(inputDisplay) ? true : false;

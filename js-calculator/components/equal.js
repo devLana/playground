@@ -5,7 +5,7 @@ const equal = () => {
   const { inputDisplay, evaluated } = calculator;
 
   if (inputDisplay != null) {
-    if (evaluated || /(\+ |− |× |÷ |√)$/.test(inputDisplay)) {
+    if (evaluated || /(\+ |− |−|× |÷ |√)$/.test(inputDisplay)) {
       return;
     } else {
       const str = /(\.|\.\d+0+|\.0+)$/.test(inputDisplay)

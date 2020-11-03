@@ -30,7 +30,7 @@ const evaluate = str => {
       const operands = expression.split(/ × | ÷ /);
 
       if (expression.includes(" × ")) {
-        operation = `${+operands[0] * +operands[1]}`;
+        operation = `${((+operands[0] * 100) * (+operands[1] * 100) / 10000)}`;
       }
 
       if (expression.includes(" ÷ ")) {

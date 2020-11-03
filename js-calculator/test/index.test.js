@@ -600,7 +600,21 @@ describe("Calculator Tests", () => {
         );
       });
 
-      it("2:- an expression is evaluated", () => {
+      it("2:- an expression has been evaluated", () => {
+        calculator.inputDisplay = "110";
+        calculator.resultDisplay = "55 × 2 =";
+        calculator.evaluated = true;
+
+        equal();
+
+        assert.strictEqual(calculator.inputDisplay, "110", "inputDisplay should be '110'");
+
+        assert.strictEqual(calculator.resultDisplay, "55 × 2 =", "resultDisplay should be '55 × 2 ='");
+
+        assert.strictEqual(calculator.evaluated, true, "evaluated should be true");
+      })
+
+      it("3:- an expression is evaluated", () => {
         const str = "60 × 82.576 − √654% + 7878.000";
         const result = "12830.002657629491";
 

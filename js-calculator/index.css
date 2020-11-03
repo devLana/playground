@@ -86,12 +86,20 @@ button {
   background-color: #ff0000;
 }
 
+#calculator--all-clear:hover {
+  background-color: #ff3333;
+}
+
 #calculator--all-clear:active {
   background-color: #660000;
 }
 
 .calculator--operator {
   background-color: #347b98;
+}
+
+.calculator--operator:hover {
+  background-color: #67afcb;
 }
 
 .calculator--operator:active {
@@ -105,16 +113,26 @@ button {
   color: #262626;
 }
 
+.calculator--number:hover,
+#calculator--period:hover,
+#calculator--clear:hover {
+  background-color: #cfe368;
+}
+
 .calculator--number:active,
 #calculator--period:active,
 #calculator--clear:active {
-  background-color: #bad728;
+  background-color: #95ac20;
 }
 
 #calculator--equals {
   background-color: #08212b;
 }
 
+#calculator--equals:hover {
+  background-color: #0c3241;
+}
+
 #calculator--equals:active {
-  background-color: #104256;
+  background-color: #14536c;
 }

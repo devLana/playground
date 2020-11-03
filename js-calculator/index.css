@@ -69,7 +69,7 @@ body {
 button {
   width: 60px;
   height: 60px;
-  border: none;
+  border: 3px solid transparent;
   border-radius: 40%;
   font-family: "Shadows Into Light", cursive;
   font-size: 35px;
@@ -80,14 +80,17 @@ button {
   align-items: center;
   cursor: pointer;
   transition: background-color 0.2s;
+  outline: none;
 }
 
 #calculator--all-clear {
   background-color: #ff0000;
 }
 
+#calculator--all-clear:focus,
 #calculator--all-clear:hover {
   background-color: #ff3333;
+  border-color: #330000;
 }
 
 #calculator--all-clear:active {
@@ -98,8 +101,10 @@ button {
   background-color: #347b98;
 }
 
+.calculator--operator:focus,
 .calculator--operator:hover {
   background-color: #67afcb;
+  border-color: #070f13;
 }
 
 .calculator--operator:active {
@@ -113,24 +118,30 @@ button {
   color: #262626;
 }
 
+.calculator--number:focus,
 .calculator--number:hover,
+#calculator--period:focus,
 #calculator--period:hover,
+#calculator--clear:focus,
 #calculator--clear:hover {
   background-color: #cfe368;
+  border-color: #a8c224;
 }
 
 .calculator--number:active,
 #calculator--period:active,
 #calculator--clear:active {
-  background-color: #95ac20;
+  background-color: #4a5610;
 }
 
 #calculator--equals {
   background-color: #08212b;
 }
 
+#calculator--equals:focus,
 #calculator--equals:hover {
   background-color: #0c3241;
+  border-color: #a9dbef;
 }
 
 #calculator--equals:active {

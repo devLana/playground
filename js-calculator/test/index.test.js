@@ -628,7 +628,7 @@ describe("Calculator Tests", () => {
 
       it("3:- an expression is evaluated", () => {
         const str = "60 × 82.576 − √654% + 7878.000";
-        const result = "12830.0026576295";
+        const result = "12830.002657629491";
 
         calculator.inputDisplay = str;
         calculator.operandHasDecimal = true;

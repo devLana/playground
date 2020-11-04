@@ -55,6 +55,10 @@ keys.addEventListener("click", e => {
   }
 });
 
+keys.addEventListener("mouseup", e => {
+  e.target.blur();
+})
+
 doc.addEventListener("keydown", e => {
   const { key } = e;
 

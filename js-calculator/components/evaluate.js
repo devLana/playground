@@ -2,7 +2,6 @@ const evaluate = str => {
   const regexOne = /−?\d+\.?\d*( × | ÷ )−?\d+\.?\d*/;
   const regexTwo = /−?\d+\.?\d*( \+ | − )−?\d+\.?\d*/;
   let result = str;
-  let operation, expression;
 
   if (result.includes("%")) {
     result
@@ -24,22 +23,7 @@ const evaluate = str => {
 
   if (regexOne.test(result)) {
     while (regexOne.test(result)) {
-      expression = result.match(regexOne)[0];
-      if (expression.includes("−")) expression = expression.replace(/−/g, "-");
-
-      const operands = expression.split(/ × | ÷ /);
-
-      if (expression.includes(" × ")) {
-        operation = `${(+operands[0] * 100 * (+operands[1] * 100)) / 10000}`;
-      }
-
-      if (expression.includes(" ÷ ")) {
-        operation = `${(+operands[0] * 10) / (+operands[1] * 10)}`;
-      }
-
-      if (operation.includes("-")) {
-        operation = operation.replace(/\-/, "−");
-      }
+      const operation = evaluation(regexOne, result);
 
       result = result.replace(regexOne, operation);
     }
@@ -47,48 +31,44 @@ const evaluate = str => {
 
   if (regexTwo.test(result)) {
     while (regexTwo.test(result)) {
-      expression = result.match(regexTwo)[0];
-      if (expression.includes("−")) expression = expression.replace(/−/g, "-");
-
-      const operands = expression.split(/ \+ | \- /);
-
-      if (expression.includes(" + ")) {
-        operation = `${(+operands[0] * 10 + +operands[1] * 10) / 10}`;
-      }
-
-      if (expression.includes(" - ")) {
-        operation = `${(+operands[0] * 100 - +operands[1] * 100) / 100}`;
-      }
-
-      if (operation.includes("-")) {
-        operation = operation.replace(/\-/, "−");
-      }
+      const operation = evaluation(regexTwo, result);
 
       result = result.replace(regexTwo, operation);
     }
   }
 
-  if (result.includes(".")) {
-    const breakPoint = 11;
-    const index = result.indexOf(".") + breakPoint;
+  return result;
+};
 
-    if (result.length < index) {
-      result = result.substring(0);
-    } else {
-      const character = result.charAt(index);
+const evaluation = (regex, result) => {
+  let expression = result.match(regex)[0];
+  let operation;
 
-      if (+character >= 5) {
-        const num = result.charAt(index - 1);
-        const newNum = +num + 1;
+  if (expression.includes("−")) expression = expression.replace(/−/g, "-");
 
-        result = `${result.substr(0, index - 1)}${newNum}`;
-      } else {
-        result = result.substr(0, index);
-      }
-    }
+  const operands = expression.split(/ × | ÷ | \+ | \- /);
+
+  if (expression.includes(" × ")) {
+    operation = `${(+operands[0] * 100 * (+operands[1] * 100)) / 10000}`;
   }
 
-  return result;
+  if (expression.includes(" ÷ ")) {
+    operation = `${(+operands[0] * 10) / (+operands[1] * 10)}`;
+  }
+
+  if (expression.includes(" + ")) {
+    operation = `${(+operands[0] * 10 + +operands[1] * 10) / 10}`;
+  }
+
+  if (expression.includes(" - ")) {
+    operation = `${(+operands[0] * 100 - +operands[1] * 100) / 100}`;
+  }
+
+  if (operation.includes("-")) {
+    operation = operation.replace(/\-/, "−");
+  }
+
+  return operation;
 };
 
 export default evaluate;

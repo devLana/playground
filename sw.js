@@ -1,11 +1,11 @@
-const cacheName = "playgroundCache-v1.3.1";
+const cacheName = "playgroundCache-v1.3.2";
 const staticFiles = [
   "/playground/",
   "/playground/assets/index.css",
   "/playground/assets/index.js",
 ];
 
-const corsCache = "playgroundCors-v1.1.3";
+const corsCache = "playgroundCors-v1.1.4";
 const dependencies = [
   "https://fonts.googleapis.com/css?family=Shadows+Into+Light|Poppins:ital@1&display=swap",
   "https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap",

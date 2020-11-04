@@ -587,7 +587,7 @@ describe("Calculator Tests", () => {
   });
 
   describe("7 - evaluate an expression", () => {
-    describe("- the equal to sign is clicked", () => {
+    describe("- equal to button is clicked", () => {
       it("1:- inputDisplay ends with an operator not '%'", () => {
         calculator.inputDisplay = "60 ÷ ";
 
@@ -607,16 +607,28 @@ describe("Calculator Tests", () => {
 
         equal();
 
-        assert.strictEqual(calculator.inputDisplay, "110", "inputDisplay should be '110'");
+        assert.strictEqual(
+          calculator.inputDisplay,
+          "110",
+          "inputDisplay should be '110'"
+        );
 
-        assert.strictEqual(calculator.resultDisplay, "55 × 2 =", "resultDisplay should be '55 × 2 ='");
+        assert.strictEqual(
+          calculator.resultDisplay,
+          "55 × 2 =",
+          "resultDisplay should be '55 × 2 ='"
+        );
 
-        assert.strictEqual(calculator.evaluated, true, "evaluated should be true");
-      })
+        assert.strictEqual(
+          calculator.evaluated,
+          true,
+          "evaluated should be true"
+        );
+      });
 
       it("3:- an expression is evaluated", () => {
         const str = "60 × 82.576 − √654% + 7878.000";
-        const result = "12830.002657629491";
+        const result = "12830.0026576295";
 
         calculator.inputDisplay = str;
         calculator.operandHasDecimal = true;
@@ -653,7 +665,7 @@ describe("Calculator Tests", () => {
       const str = "5% + √100.635 − 82.5 × −57.6356% + √64 ÷ 0.0006735";
       const regex = /−?\d+\.?\d*/;
       const output = evaluate(str);
-      const result = "11935.879028182404";
+      const result = "11935.8790281824";
 
       assert.isString(output, "output should be of type string");
 

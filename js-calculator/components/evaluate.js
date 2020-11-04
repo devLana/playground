@@ -30,11 +30,11 @@ const evaluate = str => {
       const operands = expression.split(/ × | ÷ /);
 
       if (expression.includes(" × ")) {
-        operation = `${((+operands[0] * 100) * (+operands[1] * 100) / 10000)}`;
+        operation = `${(+operands[0] * 100 * (+operands[1] * 100)) / 10000}`;
       }
 
       if (expression.includes(" ÷ ")) {
-        operation = `${+operands[0] / +operands[1]}`;
+        operation = `${(+operands[0] * 10) / (+operands[1] * 10)}`;
       }
 
       if (operation.includes("-")) {
@@ -57,7 +57,7 @@ const evaluate = str => {
       }
 
       if (expression.includes(" - ")) {
-        operation = `${+operands[0] - +operands[1]}`;
+        operation = `${(+operands[0] * 100 - +operands[1] * 100) / 100}`;
       }
 
       if (operation.includes("-")) {
@@ -65,6 +65,26 @@ const evaluate = str => {
       }
 
       result = result.replace(regexTwo, operation);
+    }
+  }
+
+  if (result.includes(".")) {
+    const breakPoint = 11;
+    const index = result.indexOf(".") + breakPoint;
+
+    if (result.length < index) {
+      result = result.substring(0);
+    } else {
+      const character = result.charAt(index);
+
+      if (+character >= 5) {
+        const num = result.charAt(index - 1);
+        const newNum = +num + 1;
+
+        result = `${result.substr(0, index - 1)}${newNum}`;
+      } else {
+        result = result.substr(0, index);
+      }
     }
   }
 

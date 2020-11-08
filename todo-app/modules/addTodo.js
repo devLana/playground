@@ -1,7 +1,7 @@
 import showTodos from "./showTodos.js";
 import storage from "./storage.js";
 
-const getId = todos => {
+export const getId = todos => {
   if (!todos) return 1;
 
   const maxId = todos.reduce((acc, { id }) => Math.max(acc, id), 0);

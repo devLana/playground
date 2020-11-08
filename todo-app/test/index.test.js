@@ -1,12 +1,5 @@
-import saveTodo from "../modules/addTodo.js";
-import showTodos from "../modules/showTodos.js";
-import completeTodo from "../modules/completeTodo.js";
-import deleteAll from "../modules/deleteAll.js";
-import deleteTodo from "../modules/deleteTodo.js";
-import editTodo from "../modules/editTodo.js";
-import markAsImportant from "../modules/importantTodo.js";
+import { getId } from "../modules/addTodo.js";
 import storage from "../modules/storage.js";
-import todosList from "../modules/todosList.js";
 
 describe("Test localStorage", () => {
   const { setTodos, getTodos, removeTodos } = storage;
@@ -42,5 +35,23 @@ describe("Test localStorage", () => {
   it("3:- remove localStorage data", () => {
     removeTodos();
     expect(localStorage.getItem("todos")).to.equal(null);
+  });
+});
+
+describe("Todo App Functions", () => {
+  const { getTodos } = storage;
+  const todos = getTodos();
+
+  describe("1 - Todo ids function", () => {
+    it("1:- generates incrementing ids starting from 1", () => {
+      const id = getId(todos);
+
+      if (!todos) {
+        expect(id).to.be.a("number").that.is.equal(1);
+        return;
+      }
+
+      expect(id).to.be.a("number").that.is.equal(id);
+    });
   });
 });

@@ -7,6 +7,7 @@ import editTodo from "./editTodo.js";
 
 const showTodos = () => {
   const todos = storage.getTodos();
+
   const todosContainer = document.querySelector("#todos__container");
   const deleteAllBtn = document.querySelector(".delete__all");
 

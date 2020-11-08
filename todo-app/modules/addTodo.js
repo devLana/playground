@@ -10,10 +10,13 @@ const getId = todos => {
 
 const saveTodo = e => {
   const todo = e.target.value.trim().replace(/ +/g, " ");
+
+  if (!todo) return;
+
   const { getTodos, setTodos } = storage;
   const todos = getTodos();
 
-  if (!todo) return;
+
   const newTodo = {
     id: getId(todos),
     content: todo,
@@ -25,7 +28,7 @@ const saveTodo = e => {
     setTodos([newTodo]);
   } else {
     todos.push(newTodo);
-    storage.setTodos(todos);
+    setTodos(todos);
   }
 
   e.target.value = "";

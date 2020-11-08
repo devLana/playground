@@ -9,6 +9,7 @@ const todosList = todos => {
       const styles = completed
         ? "border: none; background-color: transparent"
         : "";
+
       let classes;
 
       if (completed) {

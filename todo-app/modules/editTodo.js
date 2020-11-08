@@ -4,15 +4,19 @@ import storage from "./storage.js";
 const editTodo = btn => {
   btn.addEventListener("click", e => {
     const { getTodos, setTodos } = storage;
+    const todos = getTodos();
+
     const idx = e.currentTarget.className.search(/\d/);
     const id = e.currentTarget.className.substr(idx);
-    const cantEdit = getTodos().find(todo => todo.id === +id).completed;
+
+    const cantEdit = todos.find(todo => todo.id === +id).completed;
 
     if (cantEdit) return;
 
     const parentElem = document.querySelector(`.content--${id}`);
     const content = document.querySelector(`.content--${id} .todo__content`);
     const inputElem = document.createElement("INPUT");
+
     let todoToEdit;
 
     if (content) {
@@ -33,10 +37,11 @@ const editTodo = btn => {
       if (key === "Enter") {
         if (!target.value.trim()) return;
 
-        const newTodos = getTodos().map(todo => {
+        const newTodos = todos.map(todo => {
           if (todo.id === +id) {
             todo.content = target.value.trim().replace(/ +/g, " ");
           }
+
           return todo;
         });
 

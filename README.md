@@ -14,3 +14,5 @@ You can check out the live demos by clicking on the links below.
 ## [Typewriter](https://devlana.github.io/playground/typewriter/)
 
 ## [Todo App](https://devlana.github.io/playground/todo-app/)
+
+## [Dynamic Navigation](https://devlana.github.io/playground/dynamic-navigation/)

@@ -23,6 +23,10 @@ const links = [
     link: "/playground/todo-app/",
     name: "Todo App",
   },
+  {
+    link: "/playground/dynamic-navigation/",
+    name: "Dynamic Navigation",
+  }
 ];
 
 const wrapper = document.querySelector(".list-wrapper");

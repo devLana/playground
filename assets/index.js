@@ -26,7 +26,11 @@ const links = [
   {
     link: "/playground/dynamic-navigation/",
     name: "Dynamic Navigation",
-  }
+  },
+  {
+    link: "/playground/video-player/",
+    name: "Video Player",
+  },
 ];
 
 const wrapper = document.querySelector(".list-wrapper");

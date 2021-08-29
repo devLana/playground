@@ -1,4 +1,3 @@
-import state from "./modules/state.js";
 import {
   playOrPause,
   stop,

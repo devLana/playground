@@ -40,10 +40,10 @@ export const toggleMute = (videoPlayer, volumeIcon, volumeSlider) => {
 };
 
 export const updateVolume = (videoPlayer, value, volumeIcon) => {
-  const newValue = value / 100;
+  const newValue = +value / 100;
 
-  state.volume = value / 100;
-  videoPlayer.volume = value / 100;
+  state.volume = newValue;
+  videoPlayer.volume = newValue;
   volumeIcon.className =
     newValue === 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
 };
@@ -56,16 +56,16 @@ export const setCurrentTime = (videoPlayer, progressBar) => {
 };
 
 export const currentTime = (videoPlayer, value, playPauseIcon) => {
-  const videoTime = (value * videoPlayer.duration) / 100;
+  const videoTime = (+value * videoPlayer.duration) / 100;
 
-  if (videoPlayer.ended) {
-    playPauseIcon.className = "fas fa-redo-alt";
-  } else if (videoPlayer.paused) {
+  if (videoPlayer.paused && +value < 100) {
     playPauseIcon.className = "fas fa-play";
+  } else if (videoPlayer.ended) {
+    playPauseIcon.className = "fas fa-redo-alt";
   } else {
     playPauseIcon.className = "fas fa-pause";
   }
 
-  state.currentTime = value;
+  state.currentTime = +value;
   videoPlayer.currentTime = videoTime;
 };

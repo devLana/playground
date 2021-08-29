@@ -26,3 +26,24 @@ export const fastForward = videoPlayer => {
 export const rewind = videoPlayer => {
   videoPlayer.currentTime -= 5;
 };
+
+export const toggleMute = (videoPlayer, volumeIcon, volumeSlider) => {
+  if (videoPlayer.volume > 0) {
+    videoPlayer.volume = 0;
+    volumeIcon.className = "fas fa-volume-mute";
+    volumeSlider.value = 0;
+  } else {
+    videoPlayer.volume = state.volume;
+    volumeIcon.className = "fas fa-volume-up";
+    volumeSlider.value = state.volume * 100;
+  }
+};
+
+export const updateVolume = (videoPlayer, value, volumeIcon) => {
+  const newValue = value / 100;
+
+  state.volume = value / 100;
+  videoPlayer.volume = value / 100;
+  volumeIcon.className =
+    newValue === 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
+};

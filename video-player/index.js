@@ -1,36 +1,25 @@
+import state from "./modules/state.js";
+import { playOrPause, stop, fastForward, rewind } from "./modules/functions.js";
+
 const videoPlayer = document.querySelector(".video-player");
 const playPauseBtn = document.querySelector(".play-pause");
+const playPauseIcon = document.querySelector(".play-pause i");
 const fastForwardBtn = document.querySelector(".fast-forward");
 const rewindBtn = document.querySelector(".rewind");
 const stopBtn = document.querySelector(".stop");
-const volumeBtn = document.querySelector(".volume");
-// const playPauseButton = document.querySelector(".play-pause");
-
-// console.log(videoPlayer.duration);
 
 playPauseBtn.addEventListener("click", () => {
-  const icon = document.querySelector(".play-pause i");
-
-  if (videoPlayer.paused) {
-    videoPlayer.play();
-    icon.className = "fas fa-play";
-  } else {
-    videoPlayer.pause();
-    icon.className = "fas fa-pause";
-  }
+  playOrPause(videoPlayer, playPauseIcon);
 });
 
 stopBtn.addEventListener("click", () => {
-  videoPlayer.pause();
-  videoPlayer.currentTime = 0;
+  stop(videoPlayer, playPauseIcon);
 });
 
 fastForwardBtn.addEventListener("click", () => {
-  if (videoPlayer.currentTime < Math.floor(videoPlayer.duration)) {
-    videoPlayer.currentTime += 5;
-  }
+  fastForward(videoPlayer);
 });
 
 rewindBtn.addEventListener("click", () => {
-  videoPlayer.currentTime -= 5;
+  rewind(videoPlayer);
 });

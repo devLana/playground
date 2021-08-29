@@ -47,3 +47,25 @@ export const updateVolume = (videoPlayer, value, volumeIcon) => {
   volumeIcon.className =
     newValue === 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
 };
+
+export const setCurrentTime = (videoPlayer, progressBar) => {
+  const scaledTime = (videoPlayer.currentTime * 100) / videoPlayer.duration;
+
+  state.currentTime = scaledTime;
+  progressBar.value = scaledTime;
+};
+
+export const currentTime = (videoPlayer, value, playPauseIcon) => {
+  const videoTime = (value * videoPlayer.duration) / 100;
+
+  if (videoPlayer.ended) {
+    playPauseIcon.className = "fas fa-redo-alt";
+  } else if (videoPlayer.paused) {
+    playPauseIcon.className = "fas fa-play";
+  } else {
+    playPauseIcon.className = "fas fa-pause";
+  }
+
+  state.currentTime = value;
+  videoPlayer.currentTime = videoTime;
+};

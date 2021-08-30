@@ -19,6 +19,7 @@ const volumeBtn = document.querySelector(".volume");
 const volumeIcon = document.querySelector(".volume i");
 const volumeSlider = document.querySelector(".volume__slider");
 const progressBar = document.querySelector(".progress__bar");
+const progress = document.querySelector(".progress");
 
 playPauseBtn.addEventListener("click", () => {
   playOrPause(videoPlayer, playPauseIcon);
@@ -46,14 +47,18 @@ volumeSlider.addEventListener("input", e => {
 });
 
 videoPlayer.addEventListener("timeupdate", () => {
-  setCurrentTime(videoPlayer, progressBar);
+  setCurrentTime(videoPlayer, progressBar, progress);
 });
 
 videoPlayer.addEventListener("ended", () => {
   playPauseIcon.className = "fas fa-redo-alt";
 });
 
-progressBar.addEventListener("input", e => {
-  const { value } = e.target;
-  currentTime(videoPlayer, value, playPauseIcon);
+progressBar.addEventListener("mousedown", e => {
+  const { offsetX: position, button } = e;
+
+  if (button === 0) {
+    const width = progressBar.offsetWidth;
+    currentTime({ videoPlayer, position, width, playPauseIcon });
+  }
 });

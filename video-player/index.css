@@ -15,12 +15,13 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .video-player__container {
   position: relative;
   width: 100%;
-  max-width: 60rem;
+  max-width: 100rem;
 }
 
 .video-player {
@@ -39,8 +40,28 @@ html {
 
 .progress__bar {
   width: 100%;
+  height: 0.1rem;
   display: block;
   cursor: pointer;
+  background-color: #595959;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress__bar:hover {
+  height: 0.35rem;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
 }
 
 .progress__timer {
@@ -134,4 +155,24 @@ html {
     height: auto;
     margin-left: 1rem;
   }
+}
+
+.test {
+  margin-top: 10rem;
+}
+
+.test-one {
+  width: 80rem;
+  height: 1rem;
+  background-color: silver;
+  position: relative;
+}
+
+.test-two {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background-color: peachpuff;
 }

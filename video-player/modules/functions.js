@@ -48,13 +48,19 @@ export const updateVolume = (videoPlayer, value, volumeIcon) => {
     newValue === 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
 };
 
-export const setCurrentTime = (videoPlayer, progressBar, progress) => {
+export const setCurrentTime = ({
+  videoPlayer,
+  progressBar,
+  progress,
+  knob,
+}) => {
   const { currentTime, duration } = videoPlayer;
   const progressBarWidth = progressBar.offsetWidth;
   const scaledTime = (currentTime * progressBarWidth) / duration;
 
   state.currentTime = scaledTime;
   progress.style.width = `${scaledTime}px`;
+  knob.style.left = `${scaledTime - 6}px`;
 };
 
 export const currentTime = ({

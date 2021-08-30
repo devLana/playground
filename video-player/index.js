@@ -20,6 +20,7 @@ const volumeIcon = document.querySelector(".volume i");
 const volumeSlider = document.querySelector(".volume__slider");
 const progressBar = document.querySelector(".progress__bar");
 const progress = document.querySelector(".progress");
+const knob = document.querySelector(".progress__bar__knob");
 
 playPauseBtn.addEventListener("click", () => {
   playOrPause(videoPlayer, playPauseIcon);
@@ -47,7 +48,7 @@ volumeSlider.addEventListener("input", e => {
 });
 
 videoPlayer.addEventListener("timeupdate", () => {
-  setCurrentTime(videoPlayer, progressBar, progress);
+  setCurrentTime({ videoPlayer, progressBar, progress, knob });
 });
 
 videoPlayer.addEventListener("ended", () => {

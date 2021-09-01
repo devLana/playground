@@ -7,7 +7,9 @@ import {
   updateVolume,
   setCurrentTime,
   currentTime,
+  progressKnobDraggable,
 } from "./modules/functions.js";
+import state from "./modules/state.js";
 
 const videoPlayer = document.querySelector(".video-player");
 const playPauseBtn = document.querySelector(".play-pause");
@@ -20,7 +22,7 @@ const volumeIcon = document.querySelector(".volume i");
 const volumeSlider = document.querySelector(".volume__slider");
 const progressBar = document.querySelector(".progress__bar");
 const progress = document.querySelector(".progress");
-const knob = document.querySelector(".progress__bar__knob");
+const progressKnob = document.querySelector(".progress__bar__knob");
 
 playPauseBtn.addEventListener("click", () => {
   playOrPause(videoPlayer, playPauseIcon);
@@ -48,7 +50,11 @@ volumeSlider.addEventListener("input", e => {
 });
 
 videoPlayer.addEventListener("timeupdate", () => {
-  setCurrentTime({ videoPlayer, progressBar, progress, knob });
+  setCurrentTime({ videoPlayer, progressBar, progress, progressKnob });
+});
+
+window.addEventListener("resize", () => {
+  setCurrentTime({ videoPlayer, progressBar, progress, progressKnob });
 });
 
 videoPlayer.addEventListener("ended", () => {
@@ -63,3 +69,28 @@ progressBar.addEventListener("mousedown", e => {
     currentTime({ videoPlayer, position, width, playPauseIcon });
   }
 });
+
+// progressKnob.addEventListener("dragstart", e => {
+//   e.dataTransfer.setData("progressKnob", e.target.id);
+// });
+
+// progressBar.addEventListener("dragover", e => {
+//   e.preventDefault();
+// });
+
+// progressBar.addEventListener("drop", e => {
+//   const width = progressBar.offsetWidth;
+//   progressKnobDraggable({ e, videoPlayer, width, playPauseIcon });
+// });
+
+// progressKnob.addEventListener("drag", e => {
+//   const { offsetX: position } = e;
+//   const width = progressBar.offsetWidth;
+
+//   currentTime({ videoPlayer, position, width, playPauseIcon });
+// });
+
+// progressKnob.addEventListener("click", e => {
+//   // e.preventDefault();
+//   console.log(yes);
+// });

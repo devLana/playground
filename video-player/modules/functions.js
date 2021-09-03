@@ -77,20 +77,14 @@ export const currentTime = ({
   videoPlayer.currentTime = videoTime;
 };
 
-// export const progressKnobDraggable = ({
-//   e,
-//   videoPlayer,
-//   width,
-//   playPauseIcon,
-// }) => {
-//   e.preventDefault();
+export const scrubber = ({ videoPlayer, progressBar, progress, position }) => {
+  const { duration } = videoPlayer;
+  const progressBarWidth = progressBar.offsetWidth;
+  const videoTime = (position * duration) / progressBarWidth;
 
-//   const { offsetX: position, dataTransfer, target } = e;
-//   const data = dataTransfer.getData("progressKnob");
-//   const knobElem = document.getElementById(data);
-
-//   knobElem.style.left = `${position - 6}px`;
-//   target.appendChild(knobElem);
-
-//   currentTime({ videoPlayer, position, width, playPauseIcon });
-// };
+  if (position <= progressBarWidth) {
+    videoPlayer.currentTime = videoTime;
+    state.currentTime = position;
+    progress.style.width = `${position}px`;
+  }
+};

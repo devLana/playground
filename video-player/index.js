@@ -7,6 +7,7 @@ import {
   updateVolume,
   setCurrentTime,
   currentTime,
+  scrubber,
 } from "./modules/functions.js";
 import state from "./modules/state.js";
 
@@ -21,7 +22,6 @@ const volumeIcon = document.querySelector(".volume i");
 const volumeSlider = document.querySelector(".volume__slider");
 const progressBar = document.querySelector(".progress__bar");
 const progress = document.querySelector(".progress");
-const progressKnob = document.querySelector(".progress__bar__knob");
 
 playPauseBtn.addEventListener("click", () => {
   playOrPause(videoPlayer, playPauseIcon);
@@ -65,26 +65,19 @@ progressBar.addEventListener("mousedown", e => {
 
   if (button === 0) {
     const width = progressBar.offsetWidth;
+
     currentTime({ videoPlayer, position, width, playPauseIcon });
+    state.scrubbing = true;
   }
 });
 
-// progressKnob.addEventListener("dragstart", e => {
-//   e.dataTransfer.setData("progressKnob", e.target.id);
-// });
+progressBar.addEventListener("mousemove", e => {
+  if (state.scrubbing) {
+    const { offsetX: position } = e;
+    scrubber({ videoPlayer, progressBar, progress, position });
+  }
+});
 
-// progressBar.addEventListener("dragover", e => {
-//   e.preventDefault();
-// });
-
-// progressBar.addEventListener("drop", e => {
-//   const width = progressBar.offsetWidth;
-//   progressKnobDraggable({ e, videoPlayer, width, playPauseIcon });
-// });
-
-// progressKnob.addEventListener("drag", e => {
-//   const { offsetX: position } = e;
-//   const width = progressBar.offsetWidth;
-
-//   currentTime({ videoPlayer, position, width, playPauseIcon });
-// });
+progressBar.addEventListener("mouseup", () => {
+  state.scrubbing = false;
+});

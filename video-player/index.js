@@ -64,9 +64,9 @@ progressBar.addEventListener("mousedown", e => {
   const { offsetX: position, button } = e;
 
   if (button === 0) {
-    const width = progressBar.offsetWidth;
+    const progressBarWidth = progressBar.offsetWidth;
 
-    currentTime({ videoPlayer, position, width, playPauseIcon });
+    currentTime({ videoPlayer, position, progressBarWidth, playPauseIcon });
     state.scrubbing = true;
   }
 });
@@ -74,7 +74,7 @@ progressBar.addEventListener("mousedown", e => {
 progressBar.addEventListener("mousemove", e => {
   if (state.scrubbing) {
     const { offsetX: position } = e;
-    scrubber({ videoPlayer, progressBar, progress, position });
+    scrubber({ videoPlayer, progressBar, progress, position, playPauseIcon });
   }
 });
 

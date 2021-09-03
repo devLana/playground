@@ -60,12 +60,12 @@ export const setCurrentTime = (videoPlayer, progressBar, progress) => {
 export const currentTime = ({
   videoPlayer,
   position,
-  width,
+  progressBarWidth,
   playPauseIcon,
 }) => {
-  const videoTime = (position * videoPlayer.duration) / width;
+  const videoTime = (position * videoPlayer.duration) / progressBarWidth;
 
-  if (videoPlayer.paused && position < width) {
+  if (videoPlayer.paused && position < progressBarWidth) {
     playPauseIcon.className = "fas fa-play";
   } else if (videoPlayer.ended) {
     playPauseIcon.className = "fas fa-redo-alt";
@@ -77,14 +77,22 @@ export const currentTime = ({
   videoPlayer.currentTime = videoTime;
 };
 
-export const scrubber = ({ videoPlayer, progressBar, progress, position }) => {
-  const { duration } = videoPlayer;
+export const scrubber = ({
+  videoPlayer,
+  progressBar,
+  progress,
+  position,
+  playPauseIcon,
+}) => {
   const progressBarWidth = progressBar.offsetWidth;
-  const videoTime = (position * duration) / progressBarWidth;
 
   if (position <= progressBarWidth) {
-    videoPlayer.currentTime = videoTime;
-    state.currentTime = position;
+    currentTime({
+      videoPlayer,
+      position,
+      progressBarWidth,
+      playPauseIcon,
+    });
     progress.style.width = `${position}px`;
   }
 };

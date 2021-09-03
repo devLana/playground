@@ -48,13 +48,12 @@ export const updateVolume = (videoPlayer, value, volumeIcon) => {
     newValue === 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
 };
 
-export const setCurrentTime = (videoPlayer, progressBar, progress) => {
+export const setCurrentTime = (videoPlayer, progress) => {
   const { currentTime, duration } = videoPlayer;
-  const progressBarWidth = progressBar.offsetWidth;
-  const scaledTime = (currentTime * progressBarWidth) / duration;
+  const scaledTime = (currentTime * 100) / duration;
 
   state.currentTime = scaledTime;
-  progress.style.width = `${scaledTime}px`;
+  progress.style.width = `${scaledTime}%`;
 };
 
 export const currentTime = ({
@@ -63,7 +62,8 @@ export const currentTime = ({
   progressBarWidth,
   playPauseIcon,
 }) => {
-  const videoTime = (position * videoPlayer.duration) / progressBarWidth;
+  const scaledPosition = (position / progressBarWidth) * 100;
+  const videoTime = (scaledPosition / 100) * videoPlayer.duration;
 
   if (videoPlayer.paused && position < progressBarWidth) {
     playPauseIcon.className = "fas fa-play";
@@ -73,18 +73,18 @@ export const currentTime = ({
     playPauseIcon.className = "fas fa-pause";
   }
 
-  state.currentTime = position;
+  state.currentTime = scaledPosition;
   videoPlayer.currentTime = videoTime;
 };
 
 export const scrubber = ({
   videoPlayer,
-  progressBar,
+  progressBarWidth,
   progress,
   position,
   playPauseIcon,
 }) => {
-  const progressBarWidth = progressBar.offsetWidth;
+  const scaledPosition = (position / progressBarWidth) * 100;
 
   if (position <= progressBarWidth) {
     currentTime({
@@ -93,6 +93,6 @@ export const scrubber = ({
       progressBarWidth,
       playPauseIcon,
     });
-    progress.style.width = `${position}px`;
+    progress.style.width = `${scaledPosition}%`;
   }
 };

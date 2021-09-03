@@ -49,11 +49,7 @@ volumeSlider.addEventListener("input", e => {
 });
 
 videoPlayer.addEventListener("timeupdate", () => {
-  setCurrentTime(videoPlayer, progressBar, progress);
-});
-
-window.addEventListener("resize", () => {
-  setCurrentTime(videoPlayer, progressBar, progress);
+  setCurrentTime(videoPlayer, progress);
 });
 
 videoPlayer.addEventListener("ended", () => {
@@ -74,7 +70,15 @@ progressBar.addEventListener("mousedown", e => {
 progressBar.addEventListener("mousemove", e => {
   if (state.scrubbing) {
     const { offsetX: position } = e;
-    scrubber({ videoPlayer, progressBar, progress, position, playPauseIcon });
+    const progressBarWidth = progressBar.offsetWidth;
+
+    scrubber({
+      videoPlayer,
+      progressBarWidth,
+      progress,
+      position,
+      playPauseIcon,
+    });
   }
 });
 

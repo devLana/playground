@@ -69,7 +69,8 @@ html {
   z-index: 2;
 }
 
-.progress__bar__knob {
+.progress::after {
+  content: "";
   width: 1.2rem;
   height: 1.2rem;
   border: none;
@@ -77,18 +78,14 @@ html {
   background-color: #fff;
   position: absolute;
   top: 50%;
-  left: -0.6rem;
+  right: -0.6rem;
   transform: translateY(-50%) scale(0);
   transition: transform 0.15s ease-in-out;
   cursor: pointer;
   z-index: 3;
 }
 
-.progress__bar:hover > .progress__bar__knob {
-  transform: translateY(-50%) scale(1);
-}
-
-.progress__bar:hover > .bah {
+.progress__bar:hover .progress::after {
   transform: translateY(-50%) scale(1);
 }
 

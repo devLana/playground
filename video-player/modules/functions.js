@@ -48,19 +48,13 @@ export const updateVolume = (videoPlayer, value, volumeIcon) => {
     newValue === 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
 };
 
-export const setCurrentTime = ({
-  videoPlayer,
-  progressBar,
-  progress,
-  progressKnob,
-}) => {
+export const setCurrentTime = (videoPlayer, progressBar, progress) => {
   const { currentTime, duration } = videoPlayer;
   const progressBarWidth = progressBar.offsetWidth;
   const scaledTime = (currentTime * progressBarWidth) / duration;
 
   state.currentTime = scaledTime;
   progress.style.width = `${scaledTime}px`;
-  progressKnob.style.left = `${scaledTime - 6}px`;
 };
 
 export const currentTime = ({
@@ -83,20 +77,20 @@ export const currentTime = ({
   videoPlayer.currentTime = videoTime;
 };
 
-export const progressKnobDraggable = ({
-  e,
-  videoPlayer,
-  width,
-  playPauseIcon,
-}) => {
-  e.preventDefault();
+// export const progressKnobDraggable = ({
+//   e,
+//   videoPlayer,
+//   width,
+//   playPauseIcon,
+// }) => {
+//   e.preventDefault();
 
-  const { offsetX: position, dataTransfer, target } = e;
-  const data = dataTransfer.getData("progressKnob");
-  const knobElem = document.getElementById(data);
+//   const { offsetX: position, dataTransfer, target } = e;
+//   const data = dataTransfer.getData("progressKnob");
+//   const knobElem = document.getElementById(data);
 
-  knobElem.style.left = `${position - 6}px`;
-  target.appendChild(knobElem);
+//   knobElem.style.left = `${position - 6}px`;
+//   target.appendChild(knobElem);
 
-  currentTime({ videoPlayer, position, width, playPauseIcon });
-};
+//   currentTime({ videoPlayer, position, width, playPauseIcon });
+// };

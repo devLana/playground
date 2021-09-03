@@ -7,7 +7,6 @@ import {
   updateVolume,
   setCurrentTime,
   currentTime,
-  progressKnobDraggable,
 } from "./modules/functions.js";
 import state from "./modules/state.js";
 
@@ -50,11 +49,11 @@ volumeSlider.addEventListener("input", e => {
 });
 
 videoPlayer.addEventListener("timeupdate", () => {
-  setCurrentTime({ videoPlayer, progressBar, progress, progressKnob });
+  setCurrentTime(videoPlayer, progressBar, progress);
 });
 
 window.addEventListener("resize", () => {
-  setCurrentTime({ videoPlayer, progressBar, progress, progressKnob });
+  setCurrentTime(videoPlayer, progressBar, progress);
 });
 
 videoPlayer.addEventListener("ended", () => {
@@ -88,9 +87,4 @@ progressBar.addEventListener("mousedown", e => {
 //   const width = progressBar.offsetWidth;
 
 //   currentTime({ videoPlayer, position, width, playPauseIcon });
-// });
-
-// progressKnob.addEventListener("click", e => {
-//   // e.preventDefault();
-//   console.log(yes);
 // });

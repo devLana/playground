@@ -47,18 +47,28 @@ html {
   position: relative;
 }
 
-.progress {
+.progress,
+.buffered {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   width: 0;
+}
+
+.progress {
   background-color: #fff;
+  z-index: 3;
+}
+
+.buffered {
+  background-color: #c0c0c0;
   z-index: 2;
 }
 
 .progress__bar,
-.progress {
+.progress,
+.buffered {
   border: none;
   cursor: pointer;
   height: 0.2rem;
@@ -66,7 +76,8 @@ html {
 }
 
 .progress__bar:hover,
-.progress__bar:hover > .progress {
+.progress__bar:hover > .progress,
+.progress__bar:hover > .buffered {
   height: 0.5rem;
 }
 

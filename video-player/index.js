@@ -8,6 +8,7 @@ import {
   setCurrentTime,
   currentTime,
   scrubber,
+  setBufferedBar,
 } from "./modules/functions.js";
 import state from "./modules/state.js";
 
@@ -22,6 +23,7 @@ const volumeIcon = document.querySelector(".volume i");
 const volumeSlider = document.querySelector(".volume__slider");
 const progressBar = document.querySelector(".progress__bar");
 const progress = document.querySelector(".progress");
+const bufferBar = document.querySelector(".buffered");
 
 playPauseBtn.addEventListener("click", () => {
   playOrPause(videoPlayer, playPauseIcon);
@@ -84,4 +86,8 @@ progressBar.addEventListener("mousemove", e => {
 
 progressBar.addEventListener("mouseup", () => {
   state.scrubbing = false;
+});
+
+videoPlayer.addEventListener("progress", () => {
+  setBufferedBar(videoPlayer, bufferBar);
 });

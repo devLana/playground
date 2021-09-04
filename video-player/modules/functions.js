@@ -96,3 +96,18 @@ export const scrubber = ({
     progress.style.width = `${scaledPosition}%`;
   }
 };
+
+export const setBufferedBar = (videoPlayer, bufferBar) => {
+  const { duration, buffered, currentTime } = videoPlayer;
+
+  if (duration > 0) {
+    for (let i = 0; i < buffered.length; i++) {
+      if (buffered.start(buffered.length - 1 - i) < currentTime) {
+        bufferBar.style.width = `${
+          (buffered.end(buffered.length - 1 - i) / duration) * 100
+        }%`;
+        break;
+      }
+    }
+  }
+};

@@ -45,15 +45,15 @@ links.forEach(({ link, name }) => {
 list += "</ul>";
 wrapper.innerHTML = list;
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/playground/sw.js")
-      .then(() => {
-        console.log("SW registered");
-      })
-      .catch(() => {
-        console.log("SW registration failed");
-      });
-  });
-}
+// if ("serviceWorker" in navigator) {
+//   window.addEventListener("load", () => {
+//     navigator.serviceWorker
+//       .register("/playground/sw.js")
+//       .then(() => {
+//         console.log("SW registered");
+//       })
+//       .catch(() => {
+//         console.log("SW registration failed");
+//       });
+//   });
+// }

@@ -1,7 +1,8 @@
 const state = {
-  volume: 1,
+  volume: 100,
   currentTime: 0,
   scrubbing: false,
+  volumeScrubbing: false,
 };
 
 export default state;

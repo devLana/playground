@@ -27,25 +27,35 @@ export const rewind = videoPlayer => {
   videoPlayer.currentTime -= 5;
 };
 
-export const toggleMute = (videoPlayer, volumeIcon, volumeSlider) => {
+export const toggleMute = (videoPlayer, volumeIcon, volumeLevel) => {
   if (videoPlayer.volume > 0) {
     videoPlayer.volume = 0;
     volumeIcon.className = "fas fa-volume-mute";
-    volumeSlider.value = 0;
+    volumeLevel.style.width = `${0}%`;
   } else {
-    videoPlayer.volume = state.volume;
+    videoPlayer.volume = state.volume / 100;
     volumeIcon.className = "fas fa-volume-up";
-    volumeSlider.value = state.volume * 100;
+    volumeLevel.style.width = `${state.volume}%`;
   }
 };
 
-export const updateVolume = (videoPlayer, value, volumeIcon) => {
-  const newValue = +value / 100;
+export const updateVolume = ({
+  videoPlayer,
+  volumeBarWidth,
+  volumeLevel,
+  volumeIcon,
+  position,
+}) => {
+  if (position <= volumeBarWidth) {
+    const scaledVolume = position / volumeBarWidth;
 
-  state.volume = newValue;
-  videoPlayer.volume = newValue;
-  volumeIcon.className =
-    newValue === 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
+    state.volume = scaledVolume * 100;
+    videoPlayer.volume =
+      scaledVolume < 0 ? 0 : scaledVolume > 1 ? 1 : scaledVolume;
+    volumeLevel.style.width = `${scaledVolume * 100}%`;
+    volumeIcon.className =
+      scaledVolume <= 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
+  }
 };
 
 export const setCurrentTime = (videoPlayer, progress) => {

@@ -20,10 +20,13 @@ const rewindBtn = document.querySelector(".rewind");
 const stopBtn = document.querySelector(".stop");
 const volumeBtn = document.querySelector(".volume");
 const volumeIcon = document.querySelector(".volume i");
-const volumeSlider = document.querySelector(".volume__slider");
+const volumeBar = document.querySelector(".volume__bar");
+const volumeLevel = document.querySelector(".volume__level");
 const progressBar = document.querySelector(".progress__bar");
 const progress = document.querySelector(".progress");
 const bufferBar = document.querySelector(".buffered");
+
+videoPlayer.volume = 1;
 
 playPauseBtn.addEventListener("click", () => {
   playOrPause(videoPlayer, playPauseIcon);
@@ -42,12 +45,43 @@ rewindBtn.addEventListener("click", () => {
 });
 
 volumeBtn.addEventListener("click", () => {
-  toggleMute(videoPlayer, volumeIcon, volumeSlider);
+  toggleMute(videoPlayer, volumeIcon, volumeLevel);
 });
 
-volumeSlider.addEventListener("input", e => {
-  const { value } = e.target;
-  updateVolume(videoPlayer, value, volumeIcon);
+volumeBar.addEventListener("mousedown", e => {
+  const { offsetX: position, button } = e;
+
+  if (button === 0) {
+    const volumeBarWidth = volumeBar.offsetWidth;
+
+    updateVolume({
+      videoPlayer,
+      volumeBarWidth,
+      volumeLevel,
+      volumeIcon,
+      position,
+    });
+    state.volumeScrubbing = true;
+  }
+});
+
+volumeBar.addEventListener("mouseup", e => {
+  state.volumeScrubbing = false;
+});
+
+volumeBar.addEventListener("mousemove", e => {
+  if (state.volumeScrubbing) {
+    const { offsetX: position } = e;
+    const volumeBarWidth = volumeBar.offsetWidth;
+
+    updateVolume({
+      videoPlayer,
+      volumeBarWidth,
+      volumeLevel,
+      volumeIcon,
+      position,
+    });
+  }
 });
 
 videoPlayer.addEventListener("timeupdate", () => {

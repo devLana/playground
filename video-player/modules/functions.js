@@ -121,3 +121,11 @@ export const setBufferedBar = (videoPlayer, bufferBar) => {
     }
   }
 };
+
+export const toggleFullScreen = videoContainer => {
+  if (!document.fullscreenElement) {
+    videoContainer.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+};

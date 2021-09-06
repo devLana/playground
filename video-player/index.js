@@ -9,22 +9,26 @@ import {
   currentTime,
   scrubber,
   setBufferedBar,
+  toggleFullScreen,
 } from "./modules/functions.js";
 import state from "./modules/state.js";
 
-const videoPlayer = document.querySelector(".video-player");
-const playPauseBtn = document.querySelector(".play-pause");
-const playPauseIcon = document.querySelector(".play-pause i");
-const fastForwardBtn = document.querySelector(".fast-forward");
-const rewindBtn = document.querySelector(".rewind");
-const stopBtn = document.querySelector(".stop");
-const volumeBtn = document.querySelector(".volume");
-const volumeIcon = document.querySelector(".volume i");
-const volumeBar = document.querySelector(".volume__bar");
-const volumeLevel = document.querySelector(".volume__level");
-const progressBar = document.querySelector(".progress__bar");
-const progress = document.querySelector(".progress");
-const bufferBar = document.querySelector(".buffered");
+const videoContainer = document.querySelector(".video-player__container");
+const videoPlayer = videoContainer.querySelector(".video-player");
+const playPauseBtn = videoContainer.querySelector(".play-pause");
+const playPauseIcon = videoContainer.querySelector(".play-pause i");
+const fastForwardBtn = videoContainer.querySelector(".fast-forward");
+const rewindBtn = videoContainer.querySelector(".rewind");
+const stopBtn = videoContainer.querySelector(".stop");
+const volumeBtn = videoContainer.querySelector(".volume");
+const volumeIcon = videoContainer.querySelector(".volume i");
+const volumeBar = videoContainer.querySelector(".volume__bar");
+const volumeLevel = videoContainer.querySelector(".volume__level");
+const progressBar = videoContainer.querySelector(".progress__bar");
+const progress = videoContainer.querySelector(".progress");
+const bufferBar = videoContainer.querySelector(".buffered");
+const fullScreenBtn = videoContainer.querySelector(".fullscreen");
+const fullScreenIcon = videoContainer.querySelector(".fullscreen i");
 
 videoPlayer.volume = 1;
 
@@ -124,4 +128,18 @@ progressBar.addEventListener("mouseup", () => {
 
 videoPlayer.addEventListener("progress", () => {
   setBufferedBar(videoPlayer, bufferBar);
+});
+
+fullScreenBtn.addEventListener("click", () => {
+  if (document.fullscreenEnabled) {
+    toggleFullScreen(videoContainer);
+  }
+});
+
+document.addEventListener("fullscreenchange", () => {
+  if (document.fullscreenElement) {
+    fullScreenIcon.className = "fas fa-compress";
+  } else {
+    fullScreenIcon.className = "fas fa-expand";
+  }
 });

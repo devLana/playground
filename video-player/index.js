@@ -92,6 +92,10 @@ videoPlayer.addEventListener("timeupdate", () => {
   setCurrentTime(videoPlayer, progress);
 });
 
+videoPlayer.addEventListener("contextmenu", e => {
+  e.preventDefault();
+});
+
 videoPlayer.addEventListener("ended", () => {
   playPauseIcon.className = "fas fa-redo-alt";
 });

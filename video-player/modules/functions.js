@@ -1,4 +1,5 @@
 import state from "./state.js";
+import appendZero from "./util.js";
 
 export const playOrPause = (videoPlayer, playPauseIcon) => {
   if (videoPlayer.paused) {
@@ -128,4 +129,25 @@ export const toggleFullScreen = videoContainer => {
   } else {
     document.exitFullscreen();
   }
+};
+
+export const setVideoTime = (
+  videoPlayer,
+  progressDuration,
+  progressCurrentTime
+) => {
+  const { duration, currentTime } = videoPlayer;
+
+  const durationMinute = Math.floor(duration / 60);
+  const durationSecond = Math.floor((duration / 60 - durationMinute) * 60);
+  const durationOutput = `${durationMinute}:${appendZero(durationSecond)}`;
+
+  const currentTimeMInute = Math.floor(currentTime / 60);
+  const currentTimeSecond = Math.floor(currentTime - currentTimeMInute * 60);
+  const currentTimeOutput = `${currentTimeMInute}:${appendZero(
+    currentTimeSecond
+  )}`;
+
+  progressDuration.innerHTML = durationOutput;
+  progressCurrentTime.innerHTML = currentTimeOutput;
 };

@@ -10,6 +10,7 @@ import {
   scrubber,
   setBufferedBar,
   toggleFullScreen,
+  setVideoTime,
 } from "./modules/functions.js";
 import state from "./modules/state.js";
 
@@ -29,6 +30,8 @@ const progress = videoContainer.querySelector(".progress");
 const bufferBar = videoContainer.querySelector(".buffered");
 const fullScreenBtn = videoContainer.querySelector(".fullscreen");
 const fullScreenIcon = videoContainer.querySelector(".fullscreen i");
+const progressCurrentTime = videoContainer.querySelector(".current-time");
+const progressDuration = videoContainer.querySelector(".duration");
 
 videoPlayer.volume = 1;
 
@@ -69,7 +72,7 @@ volumeBar.addEventListener("mousedown", e => {
   }
 });
 
-volumeBar.addEventListener("mouseup", e => {
+volumeBar.addEventListener("mouseup", () => {
   state.volumeScrubbing = false;
 });
 
@@ -90,6 +93,7 @@ volumeBar.addEventListener("mousemove", e => {
 
 videoPlayer.addEventListener("timeupdate", () => {
   setCurrentTime(videoPlayer, progress);
+  setVideoTime(videoPlayer, progressDuration, progressCurrentTime);
 });
 
 videoPlayer.addEventListener("contextmenu", e => {
@@ -98,6 +102,10 @@ videoPlayer.addEventListener("contextmenu", e => {
 
 videoPlayer.addEventListener("ended", () => {
   playPauseIcon.className = "fas fa-redo-alt";
+});
+
+videoPlayer.addEventListener("progress", () => {
+  setBufferedBar(videoPlayer, bufferBar);
 });
 
 progressBar.addEventListener("mousedown", e => {
@@ -128,10 +136,6 @@ progressBar.addEventListener("mousemove", e => {
 
 progressBar.addEventListener("mouseup", () => {
   state.scrubbing = false;
-});
-
-videoPlayer.addEventListener("progress", () => {
-  setBufferedBar(videoPlayer, bufferBar);
 });
 
 fullScreenBtn.addEventListener("click", () => {

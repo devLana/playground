@@ -16,3 +16,5 @@ You can check out the live demos by clicking on the links below.
 ## [Todo App](https://devlana.github.io/playground/todo-app/)
 
 ## [Dynamic Navigation](https://devlana.github.io/playground/dynamic-navigation/)
+
+## [Video Player](https://devlana.github.io/playground/video-player/)

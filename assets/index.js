@@ -31,6 +31,10 @@ const links = [
     link: "/playground/video-player/",
     name: "Video Player",
   },
+  {
+    link: "/playground/pagination/",
+    name: "Pagination",
+  },
 ];
 
 const wrapper = document.querySelector(".list-wrapper");

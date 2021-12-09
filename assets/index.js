@@ -35,6 +35,10 @@ const links = [
     link: "/playground/pagination/",
     name: "Pagination",
   },
+  {
+    link: "/playground/infinite-scroll/",
+    name: "Infinite Scroll",
+  },
 ];
 
 const wrapper = document.querySelector(".list-wrapper");

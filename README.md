@@ -18,3 +18,7 @@ You can check out the live demos by clicking on the links below.
 ## [Dynamic Navigation](https://devlana.github.io/playground/dynamic-navigation/)
 
 ## [Video Player](https://devlana.github.io/playground/video-player/)
+
+## [Pagination](https://devlana.github.io/playground/pagination/)
+
+## [Infinite Scroll](https://devlana.github.io/playground/infinite-scroll/)

@@ -11,17 +11,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.contents {
+  width: 95%;
+  margin: 0 auto 50px;
+}
+
+.content__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  color: #060f3b;
+}
+
+.content__item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.content__item:nth-child(2n) {
+  background-color: rgba(192, 192, 192, 0.1);
 }
 
 .btn {
   border: none;
   border-radius: 5px;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
   padding: 8px 13px;
   background-color: rgba(192, 192, 192, 0.2);
   cursor: pointer;
-  color: rgb(6, 15, 59);
+  color: #060f3b;
   font-weight: bold;
   font-size: 16px;
   transition: background-color 0.21s linear;

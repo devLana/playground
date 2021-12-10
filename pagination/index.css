@@ -27,10 +27,6 @@
   color: #060f3b;
 }
 
-.content__item:not(:last-child) {
-  margin-bottom: 20px;
-}
-
 .content__item:nth-child(2n) {
   background-color: rgba(192, 192, 192, 0.1);
 }

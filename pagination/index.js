@@ -2,7 +2,7 @@ import pagination from "./functions/pagination.js";
 import content from "./functions/content.js";
 
 const paginate = (page = 1) => {
-  const length = 150;
+  const length = 220;
   const itemsPerPage = 8;
 
   content(length, page, itemsPerPage);

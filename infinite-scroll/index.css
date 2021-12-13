@@ -11,4 +11,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+}
+
+.content:nth-child(2n) {
+  background-color: rgba(192, 192, 192, 0.1);
 }

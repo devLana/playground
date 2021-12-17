@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
 window.addEventListener("scroll", () => {
   const wrapper = document.querySelector(".wrapper");
 
-  if (window.innerHeight + window.pageYOffset >= wrapper.offsetHeight) {
+  if (window.innerHeight + window.pageYOffset >= wrapper.scrollHeight) {
     generate();
   }
 });

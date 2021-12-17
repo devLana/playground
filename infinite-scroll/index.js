@@ -10,9 +10,7 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("scroll", () => {
-  const wrapper = document.querySelector(".wrapper");
-
-  if (window.innerHeight + window.pageYOffset >= wrapper.scrollHeight) {
+  if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight) {
     generate();
   }
 });

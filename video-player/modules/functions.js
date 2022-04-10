@@ -64,19 +64,13 @@ export const setCurrentTime = (videoPlayer, progress) => {
   const scaledTime = (currentTime * 100) / duration;
 
   state.currentTime = scaledTime;
-  progress.style.width = `${scaledTime}%`;
+  progress.value = `${scaledTime}`;
 };
 
-export const currentTime = ({
-  videoPlayer,
-  position,
-  progressBarWidth,
-  playPauseIcon,
-}) => {
-  const scaledPosition = (position / progressBarWidth) * 100;
-  const videoTime = (scaledPosition / 100) * videoPlayer.duration;
+export const currentTime = (videoPlayer, value, playPauseIcon) => {
+  const videoTime = (value / 100) * videoPlayer.duration;
 
-  if (videoPlayer.paused && position < progressBarWidth) {
+  if (videoPlayer.paused) {
     playPauseIcon.className = "fas fa-play";
   } else if (videoPlayer.ended) {
     playPauseIcon.className = "fas fa-redo-alt";
@@ -84,28 +78,7 @@ export const currentTime = ({
     playPauseIcon.className = "fas fa-pause";
   }
 
-  state.currentTime = scaledPosition;
   videoPlayer.currentTime = videoTime;
-};
-
-export const scrubber = ({
-  videoPlayer,
-  progressBarWidth,
-  progress,
-  position,
-  playPauseIcon,
-}) => {
-  const scaledPosition = (position / progressBarWidth) * 100;
-
-  if (position <= progressBarWidth) {
-    currentTime({
-      videoPlayer,
-      position,
-      progressBarWidth,
-      playPauseIcon,
-    });
-    progress.style.width = `${scaledPosition}%`;
-  }
 };
 
 export const setBufferedBar = (videoPlayer, bufferBar) => {
@@ -148,6 +121,6 @@ export const setVideoTime = (
     currentTimeSecond
   )}`;
 
-  progressDuration.innerHTML = durationOutput;
-  progressCurrentTime.innerHTML = currentTimeOutput;
+  progressDuration.textContent = durationOutput;
+  progressCurrentTime.textContent = currentTimeOutput;
 };

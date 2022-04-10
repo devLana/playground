@@ -7,8 +7,7 @@ import {
   updateVolume,
   setCurrentTime,
   currentTime,
-  scrubber,
-  setBufferedBar,
+  // setBufferedBar,
   toggleFullScreen,
   setVideoTime,
 } from "./modules/functions.js";
@@ -25,13 +24,14 @@ const volumeBtn = videoContainer.querySelector(".volume");
 const volumeIcon = videoContainer.querySelector(".volume i");
 const volumeBar = videoContainer.querySelector(".volume__bar");
 const volumeLevel = videoContainer.querySelector(".volume__level");
-const progressBar = videoContainer.querySelector(".progress__bar");
 const progress = videoContainer.querySelector(".progress");
-const bufferBar = videoContainer.querySelector(".buffered");
+// const bufferBar = videoContainer.querySelector(".buffered");
 const fullScreenBtn = videoContainer.querySelector(".fullscreen");
 const fullScreenIcon = videoContainer.querySelector(".fullscreen i");
-const progressCurrentTime = videoContainer.querySelector(".current-time");
-const progressDuration = videoContainer.querySelector(".duration");
+const progressCurrentTime = videoContainer.querySelector(
+  ".current-time > .timer"
+);
+const progressDuration = videoContainer.querySelector(".duration > .timer");
 
 videoPlayer.volume = 1;
 
@@ -104,39 +104,13 @@ videoPlayer.addEventListener("ended", () => {
   playPauseIcon.className = "fas fa-redo-alt";
 });
 
-videoPlayer.addEventListener("progress", () => {
-  setBufferedBar(videoPlayer, bufferBar);
+progress.addEventListener("input", e => {
+  currentTime(videoPlayer, e.target.value, playPauseIcon);
 });
 
-progressBar.addEventListener("mousedown", e => {
-  const { offsetX: position, button } = e;
-
-  if (button === 0) {
-    const progressBarWidth = progressBar.offsetWidth;
-
-    currentTime({ videoPlayer, position, progressBarWidth, playPauseIcon });
-    state.scrubbing = true;
-  }
-});
-
-progressBar.addEventListener("mousemove", e => {
-  if (state.scrubbing) {
-    const { offsetX: position } = e;
-    const progressBarWidth = progressBar.offsetWidth;
-
-    scrubber({
-      videoPlayer,
-      progressBarWidth,
-      progress,
-      position,
-      playPauseIcon,
-    });
-  }
-});
-
-progressBar.addEventListener("mouseup", () => {
-  state.scrubbing = false;
-});
+// videoPlayer.addEventListener("progress", () => {
+//   setBufferedBar(videoPlayer, bufferBar);
+// });
 
 fullScreenBtn.addEventListener("click", () => {
   if (document.fullscreenEnabled) {
